@@ -1,4 +1,4 @@
-module github.com/liqiongtao/goo_oceanengine
+module github.com/liqiongtao/goo-oceanengine
 
 go 1.16
 
