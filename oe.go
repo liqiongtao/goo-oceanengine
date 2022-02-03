@@ -52,7 +52,10 @@ func (oe oceanengine) request(method, url string, data []byte, opts ...goo_http_
 		return
 	}
 
-	log.Debug()
+	if oe.debug {
+		log.Debug()
+	}
+
 	return
 }
 
@@ -62,4 +65,9 @@ func (oe oceanengine) get(url string, data []byte, opts ...goo_http_request.Opti
 
 func (oe oceanengine) post(url string, data []byte, opts ...goo_http_request.Option) (rst goo_utils.Params) {
 	return oe.request("POST", url, data, opts...)
+}
+
+func (oe oceanengine) Debug() oceanengine {
+	oe.debug = true
+	return oe
 }
