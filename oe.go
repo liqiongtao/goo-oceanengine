@@ -8,7 +8,6 @@ import (
 
 type oceanengine struct {
 	config Config
-	debug  bool
 }
 
 func (oe oceanengine) request(method, url string, data []byte, opts ...goo_http_request.Option) (rst goo_utils.Params) {
@@ -17,7 +16,8 @@ func (oe oceanengine) request(method, url string, data []byte, opts ...goo_http_
 	r := goo_http_request.New(opts...)
 	log := goo_log.WithField("url", url).WithField("data", string(data))
 
-	if oe.debug {
+	if oe.config.Debug {
+		r.Debug()
 		r.SetHeader("X-Debug-Mode", "1")
 	}
 
@@ -52,7 +52,7 @@ func (oe oceanengine) request(method, url string, data []byte, opts ...goo_http_
 		return
 	}
 
-	if oe.debug {
+	if oe.config.Debug {
 		log.Debug()
 	}
 
@@ -68,6 +68,6 @@ func (oe oceanengine) post(url string, data []byte, opts ...goo_http_request.Opt
 }
 
 func (oe oceanengine) Debug() oceanengine {
-	oe.debug = true
+	oe.config.Debug = true
 	return oe
 }

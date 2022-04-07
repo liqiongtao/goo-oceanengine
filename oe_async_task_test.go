@@ -6,7 +6,7 @@ import (
 )
 
 func TestAsyncTask_AsyncTaskCreate(t *testing.T) {
-	accessToken := "8fade7017205ad92ce757475ac65b70f1609b3d2"
+	accessToken := ""
 
 	params := AsyncTaskCreateParams{
 		AdvertiserId: 1718542606637064,
@@ -38,15 +38,15 @@ func TestAsyncTask_AsyncTaskCreate(t *testing.T) {
 	}
 
 	rst := AsyncTask(Config{
-		AppId:  "1719050127541279",
-		Secret: "bd3873f97aa0910e4ae93378fbbae4e1bf691148",
+		AppId:  "",
+		Secret: "",
 	}).Create(params, accessToken)
 
 	fmt.Println(rst)
 }
 
 func TestAsyncTask_AsyncTaskGet(t *testing.T) {
-	accessToken := "8fade7017205ad92ce757475ac65b70f1609b3d2"
+	accessToken := ""
 
 	params := AsyncTaskGetParams{
 		AdvertiserId: 1718542606637064,
@@ -59,15 +59,15 @@ func TestAsyncTask_AsyncTaskGet(t *testing.T) {
 	}
 
 	rst := AsyncTask(Config{
-		AppId:  "1719050127541279",
-		Secret: "bd3873f97aa0910e4ae93378fbbae4e1bf691148",
+		AppId:  "",
+		Secret: "",
 	}).Get(params, accessToken)
 
 	fmt.Println(rst)
 }
 
 func TestAsyncTask_AsyncTaskDownload(t *testing.T) {
-	accessToken := "8fade7017205ad92ce757475ac65b70f1609b3d2"
+	accessToken := ""
 
 	params := AsyncTaskDownloadParams{
 		AdvertiserId: 1718542606637064,
@@ -77,8 +77,8 @@ func TestAsyncTask_AsyncTaskDownload(t *testing.T) {
 	}
 
 	rst := AsyncTask(Config{
-		AppId:  "1719050127541279",
-		Secret: "bd3873f97aa0910e4ae93378fbbae4e1bf691148",
+		AppId:  "",
+		Secret: "",
 	}).Download(params, accessToken)
 
 	fmt.Println(rst)

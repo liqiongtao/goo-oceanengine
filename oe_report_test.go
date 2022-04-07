@@ -7,7 +7,7 @@ import (
 )
 
 func TestReport_ReportAdvertiserGet(t *testing.T) {
-	accessToken := "8fade7017205ad92ce757475ac65b70f1609b3d2"
+	accessToken := ""
 
 	nw := time.Now()
 
@@ -20,15 +20,15 @@ func TestReport_ReportAdvertiserGet(t *testing.T) {
 	}
 
 	rst := Report(Config{
-		AppId:  "1719050127541279",
-		Secret: "bd3873f97aa0910e4ae93378fbbae4e1bf691148",
+		AppId:  "",
+		Secret: "",
 	}).AdvertiserGet(params, accessToken)
 
 	fmt.Println(rst)
 }
 
 func TestReport_ReportCampaignGet(t *testing.T) {
-	accessToken := "8fade7017205ad92ce757475ac65b70f1609b3d2"
+	accessToken := ""
 
 	nw := time.Now()
 
@@ -42,15 +42,15 @@ func TestReport_ReportCampaignGet(t *testing.T) {
 	}
 
 	rst := Report(Config{
-		AppId:  "1719050127541279",
-		Secret: "bd3873f97aa0910e4ae93378fbbae4e1bf691148",
+		AppId:  "",
+		Secret: "",
 	}).CampaignGet(params, accessToken)
 
 	fmt.Println(rst)
 }
 
 func TestReport_ReportAdGet(t *testing.T) {
-	accessToken := "8fade7017205ad92ce757475ac65b70f1609b3d2"
+	accessToken := ""
 
 	nw := time.Now()
 
@@ -65,8 +65,8 @@ func TestReport_ReportAdGet(t *testing.T) {
 	}
 
 	rst := Report(Config{
-		AppId:  "1719050127541279",
-		Secret: "bd3873f97aa0910e4ae93378fbbae4e1bf691148",
+		AppId:  "",
+		Secret: "",
 	}).AdGet(params, accessToken)
 
 	for _, i := range rst.Get("data.list").Array() {
@@ -88,7 +88,7 @@ func TestReport_ReportAdGet(t *testing.T) {
 }
 
 func TestReport_ReportCreativeGet(t *testing.T) {
-	accessToken := "8fade7017205ad92ce757475ac65b70f1609b3d2"
+	accessToken := ""
 
 	nw := time.Now()
 
@@ -102,8 +102,8 @@ func TestReport_ReportCreativeGet(t *testing.T) {
 	}
 
 	rst := Report(Config{
-		AppId:  "1719050127541279",
-		Secret: "bd3873f97aa0910e4ae93378fbbae4e1bf691148",
+		AppId:  "",
+		Secret: "",
 	}).CreativeGet(params, accessToken)
 
 	fmt.Println(rst)
