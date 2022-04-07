@@ -2,7 +2,6 @@ package goo_oceanengine
 
 import (
 	goo_http_request "github.com/liqiongtao/googo.io/goo-http-request"
-	goo_log "github.com/liqiongtao/googo.io/goo-log"
 	goo_utils "github.com/liqiongtao/googo.io/goo-utils"
 )
 
@@ -14,7 +13,6 @@ func (oe oceanengine) request(method, url string, data []byte, opts ...goo_http_
 	rst = goo_utils.NewParams()
 
 	r := goo_http_request.New(opts...)
-	log := goo_log.WithField("url", url).WithField("data", string(data))
 
 	if oe.config.Debug {
 		r.Debug()
@@ -40,20 +38,12 @@ func (oe oceanengine) request(method, url string, data []byte, opts ...goo_http_
 
 	if err != nil {
 		rst.Set("code", 5001).Set("message", err)
-		log.Error(err)
 		return
 	}
 
-	log.WithField("result", string(b))
-
-	if rst, err = goo_utils.Byte(b).Params(); err != nil {
+	rst, err = goo_utils.Byte(b).Params()
+	if err != nil {
 		rst.Set("code", 5002).Set("message", err)
-		log.Error(err)
-		return
-	}
-
-	if oe.config.Debug {
-		log.Debug()
 	}
 
 	return
