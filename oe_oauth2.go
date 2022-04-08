@@ -1,6 +1,7 @@
 package goo_oceanengine
 
 import (
+	"encoding/json"
 	"fmt"
 	goo_http_request "github.com/liqiongtao/googo.io/goo-http-request"
 	goo_utils "github.com/liqiongtao/googo.io/goo-utils"
@@ -21,10 +22,10 @@ type oauth2 struct {
 // state：即自定义参数，可用于传递自定义信息，回调时会原样带回。常见应用比如将广告主账号作为自定义参数，回调时以区分授权码对应的广告主，其他应用方式可按实际需要选择
 // scope：即授权范围，授权的权限范围，不传时代表当前应用拥有的所有权限。注意，权限范围只能在此应用拥有的权限范围之内。格式例如：scope=[1, 2, 3, 41]。具体权限范围取值见scope权限说明，每个权限后面的数字记为该权限的表示数值
 // redirect_uri：即回调链接，由开发者自行提供和定义，用于授权成功跳转并接受回调信息。注意：redirect_uri 需要与APP应用的回调链接保持一致，否则会报错,回调地址示范：https://yourdomain.com/oauth2/callback/
-func (oa oauth2) AuditUrl(redirectUri string) string {
-	state := goo_utils.NonceStr8()
+func (oa oauth2) AuditUrl(redirectUri string, args ...string) string {
+	b, _ := json.Marshal(&args)
 	scope := ""
-	return fmt.Sprintf(OAUTH_URL, oa.config.AppId, state, scope, url.PathEscape(redirectUri))
+	return fmt.Sprintf(OAUTH_URL, oa.config.AppId, url.PathEscape(string(b)), scope, url.PathEscape(redirectUri))
 }
 
 // 获取Access Token
