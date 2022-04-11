@@ -3,6 +3,7 @@ package goo_oceanengine
 import (
 	"encoding/json"
 	goo_http_request "github.com/liqiongtao/googo.io/goo-http-request"
+	"time"
 )
 
 type oceanengine struct {
@@ -43,12 +44,26 @@ func (oe oceanengine) request(method, url string, data []byte, rst interface{}, 
 	return
 }
 
-func (oe oceanengine) get(url string, data []byte, rst interface{}, opts ...goo_http_request.Option) error {
-	return oe.request("GET", url, data, rst, opts...)
+func (oe oceanengine) get(url string, data []byte, rst interface{}, opts ...goo_http_request.Option) (err error) {
+	for i := 0; i < 5; i++ {
+		if err = oe.request("GET", url, data, rst, opts...); err != nil {
+			time.Sleep(time.Second)
+			continue
+		}
+		break
+	}
+	return
 }
 
-func (oe oceanengine) post(url string, data []byte, rst interface{}, opts ...goo_http_request.Option) error {
-	return oe.request("POST", url, data, rst, opts...)
+func (oe oceanengine) post(url string, data []byte, rst interface{}, opts ...goo_http_request.Option) (err error) {
+	for i := 0; i < 5; i++ {
+		if err = oe.request("POST", url, data, rst, opts...); err != nil {
+			time.Sleep(time.Second)
+			continue
+		}
+		break
+	}
+	return
 }
 
 func (oe oceanengine) Debug() oceanengine {
