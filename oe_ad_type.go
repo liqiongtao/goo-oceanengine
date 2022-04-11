@@ -31,8 +31,8 @@ type AdGetResult struct {
 	Code    int    `json:"code"`
 	Data    struct {
 		List []struct {
-			CampaignId   int    `json:"campaign_id"`
-			Id           int    `json:"id"`
+			CampaignId   int64  `json:"campaign_id"`
+			Id           int64  `json:"id"`
 			Name         string `json:"name"`
 			AdCreateTime string `json:"ad_create_time"`
 			AdModifyTime string `json:"ad_modify_time"`

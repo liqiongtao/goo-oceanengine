@@ -545,7 +545,7 @@ type ReportAdGetResult struct {
 			DeepConvert                       int64   `json:"deep_convert"`
 			LiveFansClubJoinCnt               int     `json:"live_fans_club_join_cnt"`
 			PhoneConnect                      int     `json:"phone_connect"`
-			Id                                string  `json:"id"`
+			Id                                int64   `json:"id"`
 			IesMusicClick                     int     `json:"ies_music_click"`
 			Play100FeedBreak                  int     `json:"play_100_feed_break"`
 			CouponSinglePage                  int     `json:"coupon_single_page"`
@@ -745,7 +745,7 @@ type ReportCreativeGetResult struct {
 			DeepConvert                       int64   `json:"deep_convert"`
 			LiveFansClubJoinCnt               int     `json:"live_fans_club_join_cnt"`
 			PhoneConnect                      int     `json:"phone_connect"`
-			Id                                string  `json:"id"`
+			Id                                int64   `json:"id"`
 			IesMusicClick                     int     `json:"ies_music_click"`
 			Play100FeedBreak                  int     `json:"play_100_feed_break"`
 			CouponSinglePage                  int     `json:"coupon_single_page"`

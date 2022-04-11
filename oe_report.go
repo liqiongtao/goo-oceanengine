@@ -39,7 +39,7 @@ func (r report) CampaignGet(params ReportCampaignGetParams, accessToken string) 
 
 	rst = ReportCampaignGetResult{}
 	if err := r.get(REPORT_CAMPAIGN_GET_URL, params.Json(), &rst, opt); err != nil {
-		rst = ReportCampaignGetResult{}
+		rst = ReportCampaignGetResult{Code: 5001, Message: err.Error()}
 	}
 	return
 }
@@ -55,7 +55,7 @@ func (r report) AdGet(params ReportAdGetParams, accessToken string) (rst ReportA
 
 	rst = ReportAdGetResult{}
 	if err := r.get(REPORT_AD_GET_URL, params.Json(), &rst, opt); err != nil {
-		rst = ReportAdGetResult{}
+		rst = ReportAdGetResult{Code: 5001, Message: err.Error()}
 	}
 	return
 }
@@ -70,7 +70,7 @@ func (r report) CreativeGet(params ReportCreativeGetParams, accessToken string) 
 	opt := goo_http_request.HeaderOption("Access-Token", accessToken)
 	rst = ReportCreativeGetResult{}
 	if err := r.get(REPORT_CREATIVE_GET_URL, params.Json(), &rst, opt); err != nil {
-		rst = ReportCreativeGetResult{}
+		rst = ReportCreativeGetResult{Code: 5001, Message: err.Error()}
 	}
 	return
 }

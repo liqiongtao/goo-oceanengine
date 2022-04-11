@@ -30,7 +30,7 @@ type CampaignGetResult struct {
 	Data    struct {
 		List []struct {
 			Name               string `json:"name"`
-			Id                 int    `json:"id"`
+			Id                 int64  `json:"id"`
 			CampaignCreateTime string `json:"campaign_create_time"`
 			CampaignModifyTime string `json:"campaign_modify_time"`
 		} `json:"list"`
