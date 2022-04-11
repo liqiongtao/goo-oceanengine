@@ -69,13 +69,25 @@ func (p AsyncTaskCreateParams) Json() []byte {
 	return b
 }
 
+type AsyncTaskCreateResult struct {
+	Message string `json:"message"`
+	Code    int    `json:"code"`
+	Data    struct {
+		CreateTime string `json:"create_time"`
+		TaskName   string `json:"task_name"`
+		TaskId     int    `json:"task_id"`
+		TaskStatus string `json:"task_status"`
+	} `json:"data"`
+	RequestId string `json:"request_id"`
+}
+
 // 获取任务列表 - 请求参数
 type AsyncTaskGetParams struct {
 	AdvertiserId int64 `json:"advertiser_id,omitempty"` // 广告主id
 	Filtering    struct {
 		TaskIds  []int64 `json:"task_ids,omitempty"`  // 任务 id。最多 10 个
 		TaskName string  `json:"task_name,omitempty"` // 任务名称。
-	} `json:"filtering,omitempty"`              // 过滤条件，若此字段不传，或传空则视为无限制条件
+	} `json:"filtering,omitempty"` // 过滤条件，若此字段不传，或传空则视为无限制条件
 	Page     int32 `json:"page,omitempty"`      // 页数默认值: 1
 	PageSize int32 `json:"page_size,omitempty"` // 页面大小默认值:10，page_size范围为[1,10]
 }
@@ -83,6 +95,28 @@ type AsyncTaskGetParams struct {
 func (p AsyncTaskGetParams) Json() []byte {
 	b, _ := json.Marshal(&p)
 	return b
+}
+
+type AsyncTaskGetResult struct {
+	Message string `json:"message"`
+	Code    int    `json:"code"`
+	Data    struct {
+		PageInfo struct {
+			TotalNumber int `json:"total_number"`
+			Page        int `json:"page"`
+			PageSize    int `json:"page_size"`
+			TotalPage   int `json:"total_page"`
+		} `json:"page_info"`
+		List []struct {
+			TaskId     int    `json:"task_id"`
+			ErrMsg     string `json:"err_msg"`
+			CreateTime string `json:"create_time"`
+			TaskName   string `json:"task_name"`
+			FileSize   int    `json:"file_size"`
+			TaskStatus string `json:"task_status"`
+		} `json:"list"`
+	} `json:"data"`
+	RequestId string `json:"request_id"`
 }
 
 // 下载任务结果 - 请求参数

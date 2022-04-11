@@ -9,7 +9,7 @@ func TestCampaign_CampaignGet(t *testing.T) {
 	accessToken := ""
 
 	params := CampaignGetParams{
-		AdvertiserId: "1718542606637064",
+		AdvertiserId: 0,
 		filtering: struct {
 			Ids                []int64 `json:"ids,omitempty"`
 			CampaignName       string  `json:"campaign_name,omitempty"`

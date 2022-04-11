@@ -32,38 +32,59 @@ func (oa oauth2) AuditUrl(redirectUri string, args ...string) string {
 // https://open.oceanengine.com/doc/index.html?key=ad&type=api&id=1696710505596940#item-link-%E8%AF%B7%E6%B1%82%E5%9C%B0%E5%9D%80
 // Access-Token是调用接口时，操作指定广告账户的身份凭证，有效期为24小时
 // Refresh-Token用于生成新access_token和refresh_token并且刷新时效达到续期的目的
-func (oa oauth2) AccessToken(authCode string) goo_utils.Params {
+func (oa oauth2) AccessToken(authCode string) (rst AccessTokenResult) {
 	p := goo_utils.NewParams()
 	p.Set("app_id", oa.config.AppId)
 	p.Set("secret", oa.config.Secret)
 	p.Set("grant_type", "auth_code")
 	p.Set("auth_code", authCode)
-	return oa.post(ACCESS_TOKEN_URL, p.JSON())
+
+	rst = AccessTokenResult{}
+	if err := oa.post(ACCESS_TOKEN_URL, p.JSON(), &rst); err != nil {
+		rst = AccessTokenResult{Code: 5001, Message: err.Error()}
+	}
+	return
 }
 
 // 刷新Refresh Token
 // https://open.oceanengine.com/doc/index.html?key=ad&type=api&id=1696710506097679#item-link-%E5%BA%94%E7%AD%94%E5%AD%97%E6%AE%B5
-func (oa oauth2) RefreshToken(refreshToken string) goo_utils.Params {
+func (oa oauth2) RefreshToken(refreshToken string) (rst RefreshTokenResult) {
 	p := goo_utils.NewParams()
 	p.Set("app_id", oa.config.AppId)
 	p.Set("secret", oa.config.Secret)
 	p.Set("grant_type", "refresh_token")
 	p.Set("refresh_token", refreshToken)
-	return oa.post(REFRESH_TOKEN_URL, p.JSON())
+
+	rst = RefreshTokenResult{}
+	if err := oa.post(REFRESH_TOKEN_URL, p.JSON(), &rst); err != nil {
+		rst = RefreshTokenResult{Code: 5001, Message: err.Error()}
+	}
+	return
 }
 
 // 获取已授权账户
 // https://open.oceanengine.com/doc/index.html?key=ad&type=api&id=1696710506097679#item-link-%E5%BA%94%E7%AD%94%E5%AD%97%E6%AE%B5
-func (oa oauth2) AdvertiserGet(accessToken string) goo_utils.Params {
+func (oa oauth2) AdvertiserGet(accessToken string) (rst AdvertiserGetResult) {
 	p := goo_utils.NewParams()
 	p.Set("app_id", oa.config.AppId)
 	p.Set("secret", oa.config.Secret)
 	p.Set("access_token", accessToken)
-	return oa.get(ADVERTISER_GET_URL, p.JSON())
+
+	rst = AdvertiserGetResult{}
+	if err := oa.get(ADVERTISER_GET_URL, p.JSON(), &rst); err != nil {
+		rst = AdvertiserGetResult{Code: 5001, Message: err.Error()}
+	}
+	return
 }
 
 // 获取授权User信息
 // https://open.oceanengine.com/doc/index.html?key=ad&type=api&id=1696710507039756#item-link-%E8%AF%B7%E6%B1%82%E5%9C%B0%E5%9D%80
-func (oa oauth2) UserInfo(accessToken string) goo_utils.Params {
-	return oa.get(USER_INFO_URL, []byte{}, goo_http_request.HeaderOption("Access-Token", accessToken))
+func (oa oauth2) UserInfo(accessToken string) (rst UserInfoResult) {
+	opt := goo_http_request.HeaderOption("Access-Token", accessToken)
+
+	rst = UserInfoResult{}
+	if err := oa.get(USER_INFO_URL, []byte{}, &rst, opt); err != nil {
+		rst = UserInfoResult{Code: 5001, Message: err.Error()}
+	}
+	return
 }

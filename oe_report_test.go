@@ -12,7 +12,7 @@ func TestReport_ReportAdvertiserGet(t *testing.T) {
 	nw := time.Now()
 
 	params := ReportAdvertiserGetParams{
-		AdvertiserId: "1718542606637064",
+		AdvertiserId: 0,
 		StartDate:    nw.Format("2006-01-02"),
 		EndDate:      nw.Format("2006-01-02"),
 		Page:         1,
@@ -33,7 +33,7 @@ func TestReport_ReportCampaignGet(t *testing.T) {
 	nw := time.Now()
 
 	params := ReportCampaignGetParams{
-		AdvertiserId: "1718542606637064",
+		AdvertiserId: 0,
 		StartDate:    nw.Format("2006-01-02"),
 		EndDate:      nw.Format("2006-01-02"),
 		GroupBy:      []string{"STAT_GROUP_BY_FIELD_ID", "STAT_GROUP_BY_FIELD_STAT_TIME"},
@@ -55,7 +55,7 @@ func TestReport_ReportAdGet(t *testing.T) {
 	nw := time.Now()
 
 	params := ReportAdGetParams{
-		AdvertiserId:    "1718542606637064",
+		AdvertiserId:    9,
 		StartDate:       nw.Format("2006-01-02"),
 		EndDate:         nw.Format("2006-01-02"),
 		GroupBy:         []string{"STAT_GROUP_BY_FIELD_ID", "STAT_GROUP_BY_FIELD_STAT_TIME"},
@@ -69,22 +69,7 @@ func TestReport_ReportAdGet(t *testing.T) {
 		Secret: "",
 	}).AdGet(params, accessToken)
 
-	for _, i := range rst.Get("data.list").Array() {
-		fmt.Println(
-			i.Get("campaign_id").Int64(),
-			i.Get("ad_id").Int64(),
-			i.Get("stat_datetime").String(),
-			i.Get("click").Int64(),
-			i.Get("show").Int64(),
-			i.Get("convert").Int64(),
-			i.Get("cost").Float64(),
-			i.Get("convert_cost").Float64(),
-			i.Get("convert_rate").Float64(),
-			i.Get("ctr").Float64(),
-		)
-	}
-
-	//fmt.Println(rst)
+	fmt.Println(rst)
 }
 
 func TestReport_ReportCreativeGet(t *testing.T) {
@@ -93,7 +78,7 @@ func TestReport_ReportCreativeGet(t *testing.T) {
 	nw := time.Now()
 
 	params := ReportCreativeGetParams{
-		AdvertiserId: "1718542606637064",
+		AdvertiserId: 0,
 		StartDate:    nw.Format("2006-01-02"),
 		EndDate:      nw.Format("2006-01-02"),
 		GroupBy:      []string{"STAT_GROUP_BY_FIELD_ID", "STAT_GROUP_BY_FIELD_STAT_TIME"},

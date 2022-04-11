@@ -1,17 +1,15 @@
 package goo_oceanengine
 
 import (
+	"encoding/json"
 	goo_http_request "github.com/liqiongtao/googo.io/goo-http-request"
-	goo_utils "github.com/liqiongtao/googo.io/goo-utils"
 )
 
 type oceanengine struct {
 	config Config
 }
 
-func (oe oceanengine) request(method, url string, data []byte, opts ...goo_http_request.Option) (rst goo_utils.Params) {
-	rst = goo_utils.NewParams()
-
+func (oe oceanengine) request(method, url string, data []byte, rst interface{}, opts ...goo_http_request.Option) (err error) {
 	r := goo_http_request.New(opts...)
 
 	if oe.config.Debug {
@@ -20,8 +18,7 @@ func (oe oceanengine) request(method, url string, data []byte, opts ...goo_http_
 	}
 
 	var (
-		b   []byte
-		err error
+		b []byte
 	)
 
 	switch method {
@@ -37,24 +34,21 @@ func (oe oceanengine) request(method, url string, data []byte, opts ...goo_http_
 	}
 
 	if err != nil {
-		rst.Set("code", 5001).Set("message", err)
 		return
 	}
-
-	rst, err = goo_utils.Byte(b).Params()
-	if err != nil {
-		rst.Set("code", 5002).Set("message", err)
+	if err := json.Unmarshal(b, &rst); err != nil {
+		return
 	}
 
 	return
 }
 
-func (oe oceanengine) get(url string, data []byte, opts ...goo_http_request.Option) (rst goo_utils.Params) {
-	return oe.request("GET", url, data, opts...)
+func (oe oceanengine) get(url string, data []byte, rst interface{}, opts ...goo_http_request.Option) error {
+	return oe.request("GET", url, data, rst, opts...)
 }
 
-func (oe oceanengine) post(url string, data []byte, opts ...goo_http_request.Option) (rst goo_utils.Params) {
-	return oe.request("POST", url, data, opts...)
+func (oe oceanengine) post(url string, data []byte, rst interface{}, opts ...goo_http_request.Option) error {
+	return oe.request("POST", url, data, rst, opts...)
 }
 
 func (oe oceanengine) Debug() oceanengine {

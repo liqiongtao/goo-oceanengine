@@ -9,7 +9,7 @@ func TestAd_Get(t *testing.T) {
 	accessToken := ""
 
 	params := AdGetParams{
-		AdvertiserId: "1718542606637064",
+		AdvertiserId: 0,
 		Fields:       nil,
 		Page:         1,
 		PageSize:     100,

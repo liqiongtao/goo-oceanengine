@@ -9,7 +9,7 @@ func TestAsyncTask_AsyncTaskCreate(t *testing.T) {
 	accessToken := ""
 
 	params := AsyncTaskCreateParams{
-		AdvertiserId: 1718542606637064,
+		AdvertiserId: 0,
 		TaskName:     "",
 		Force:        "",
 		TaskType:     "",
@@ -49,7 +49,7 @@ func TestAsyncTask_AsyncTaskGet(t *testing.T) {
 	accessToken := ""
 
 	params := AsyncTaskGetParams{
-		AdvertiserId: 1718542606637064,
+		AdvertiserId: 0,
 		Filtering: struct {
 			TaskIds  []int64 `json:"task_ids,omitempty"`
 			TaskName string  `json:"task_name,omitempty"`
@@ -70,7 +70,7 @@ func TestAsyncTask_AsyncTaskDownload(t *testing.T) {
 	accessToken := ""
 
 	params := AsyncTaskDownloadParams{
-		AdvertiserId: 1718542606637064,
+		AdvertiserId: 0,
 		TaskId:       0,
 		RangeFrom:    0,
 		RangeTo:      0,
