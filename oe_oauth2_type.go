@@ -7,9 +7,10 @@ type AccessTokenResult struct {
 		AccessToken           string  `json:"access_token"`
 		ExpiresIn             int     `json:"expires_in"`
 		RefreshToken          string  `json:"refresh_token"`
-		AdvertiserId          int64   `json:"advertiser_id"`
-		AdvertiserIds         []int64 `json:"advertiser_ids"`
 		RefreshTokenExpiresIn int     `json:"refresh_token_expires_in"`
+		AdvertiserId          int64   `json:"advertiser_id"`
+		AdvertiserName        string  `json:"advertiser_name"`
+		AdvertiserIds         []int64 `json:"advertiser_ids"`
 	} `json:"data"`
 }
 
