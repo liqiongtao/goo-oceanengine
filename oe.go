@@ -36,7 +36,7 @@ func (oe oceanengine) request(method, url string, data []byte, rst interface{}, 
 	if err != nil {
 		return
 	}
-	if err := json.Unmarshal(b, &rst); err != nil {
+	if err = json.Unmarshal(b, &rst); err != nil {
 		return
 	}
 
