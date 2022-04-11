@@ -70,7 +70,7 @@ type ReportAdvertiserGetResult struct {
 			LubanOrderRoi                     float64 `json:"luban_order_roi"`
 			ActiveCost                        float64 `json:"active_cost"`
 			AttributionDeepConvertCost        float64 `json:"attribution_deep_convert_cost"`
-			AttributionDeepConvert            int     `json:"attribution_deep_convert"`
+			AttributionDeepConvert            int64   `json:"attribution_deep_convert"`
 			NextDayOpen                       int     `json:"next_day_open"`
 			InstallFinish                     int     `json:"install_finish"`
 			DownloadFinishCost                float64 `json:"download_finish_cost"`
@@ -144,7 +144,7 @@ type ReportAdvertiserGetResult struct {
 			CardShow                          int     `json:"card_show"`
 			MapSearch                         int     `json:"map_search"`
 			InAppOrder                        int     `json:"in_app_order"`
-			AttributionConvert                int     `json:"attribution_convert"`
+			AttributionConvert                int64   `json:"attribution_convert"`
 			WechatFirstPayRate                float64 `json:"wechat_first_pay_rate"`
 			AttributionGamePay7DCount         int     `json:"attribution_game_pay_7d_count"`
 			ClickDownload                     int     `json:"click_download"`
@@ -153,7 +153,7 @@ type ReportAdvertiserGetResult struct {
 			Share                             int     `json:"share"`
 			ClickInstall                      int     `json:"click_install"`
 			AdvancedCreativeFormSubmit        int     `json:"advanced_creative_form_submit"`
-			DeepConvert                       int     `json:"deep_convert"`
+			DeepConvert                       int64   `json:"deep_convert"`
 			LiveFansClubJoinCnt               int     `json:"live_fans_club_join_cnt"`
 			PhoneConnect                      int     `json:"phone_connect"`
 			Id                                int64   `json:"id"`
@@ -226,7 +226,7 @@ type ReportCampaignGetResult struct {
 			TotalPage   int `json:"total_page"`
 		} `json:"page_info"`
 		List []struct {
-			Show                              int     `json:"show"`
+			Show                              int64   `json:"show"`
 			NextDayOpenRate                   float64 `json:"next_day_open_rate"`
 			PreLoanCreditCost                 float64 `json:"pre_loan_credit_cost"`
 			LubanLiveGiftCnt                  int     `json:"luban_live_gift_cnt"`
@@ -261,22 +261,22 @@ type ReportCampaignGetResult struct {
 			LubanOrderRoi                     float64 `json:"luban_order_roi"`
 			ActiveCost                        float64 `json:"active_cost"`
 			AttributionDeepConvertCost        float64 `json:"attribution_deep_convert_cost"`
-			AttributionDeepConvert            int     `json:"attribution_deep_convert"`
+			AttributionDeepConvert            int64   `json:"attribution_deep_convert"`
 			NextDayOpen                       int     `json:"next_day_open"`
 			InstallFinish                     int     `json:"install_finish"`
 			DownloadFinishCost                float64 `json:"download_finish_cost"`
 			ConvertCost                       float64 `json:"convert_cost"`
 			ActiveRate                        float64 `json:"active_rate"`
-			CampaignId                        int     `json:"campaign_id"`
+			CampaignId                        int64   `json:"campaign_id"`
 			AdvancedCreativeCouponAddition    int     `json:"advanced_creative_coupon_addition"`
 			ActivePayCost                     float64 `json:"active_pay_cost"`
 			PoiAddressClick                   int     `json:"poi_address_click"`
 			Cost                              float64 `json:"cost"`
 			LoanCompletion                    int     `json:"loan_completion"`
 			LubanLiveShareCnt                 int     `json:"luban_live_share_cnt"`
-			Download                          int     `json:"download"`
+			Download                          int64   `json:"download"`
 			WechatLoginCost                   float64 `json:"wechat_login_cost"`
-			Click                             int     `json:"click"`
+			Click                             int64   `json:"click"`
 			InstallFinishRate                 float64 `json:"install_finish_rate"`
 			AttributionWechatFirstPay30DCost  float64 `json:"attribution_wechat_first_pay_30d_cost"`
 			Play75FeedBreak                   int     `json:"play_75_feed_break"`
@@ -291,18 +291,18 @@ type ReportCampaignGetResult struct {
 			Play50FeedBreak                   int     `json:"play_50_feed_break"`
 			ClickCallDy                       int     `json:"click_call_dy"`
 			IesChallengeClick                 int     `json:"ies_challenge_click"`
-			Active                            int     `json:"active"`
+			Active                            int64   `json:"active"`
 			Lottery                           int     `json:"lottery"`
 			LoanCompletionRate                float64 `json:"loan_completion_rate"`
 			WifiPlay                          int     `json:"wifi_play"`
-			Convert                           int     `json:"convert"`
+			Convert                           int64   `json:"convert"`
 			Ctr                               float64 `json:"ctr"`
 			AvgClickCost                      float64 `json:"avg_click_cost"`
 			GamePayCost                       int     `json:"game_pay_cost"`
 			DeepConvertCost                   float64 `json:"deep_convert_cost"`
 			AttributionWechatPay30DRoi        float64 `json:"attribution_wechat_pay_30d_roi"`
 			Wechat                            int     `json:"wechat"`
-			View                              int     `json:"view"`
+			View                              int64   `json:"view"`
 			AttributionConvertCost            float64 `json:"attribution_convert_cost"`
 			ConsultEffective                  int     `json:"consult_effective"`
 			Comment                           int     `json:"comment"`
@@ -337,7 +337,7 @@ type ReportCampaignGetResult struct {
 			CardShow                          int     `json:"card_show"`
 			MapSearch                         int     `json:"map_search"`
 			InAppOrder                        int     `json:"in_app_order"`
-			AttributionConvert                int     `json:"attribution_convert"`
+			AttributionConvert                int64   `json:"attribution_convert"`
 			WechatFirstPayRate                float64 `json:"wechat_first_pay_rate"`
 			AttributionGamePay7DCount         int     `json:"attribution_game_pay_7d_count"`
 			ClickDownload                     int     `json:"click_download"`
@@ -346,7 +346,7 @@ type ReportCampaignGetResult struct {
 			Share                             int     `json:"share"`
 			ClickInstall                      int     `json:"click_install"`
 			AdvancedCreativeFormSubmit        int     `json:"advanced_creative_form_submit"`
-			DeepConvert                       int     `json:"deep_convert"`
+			DeepConvert                       int64   `json:"deep_convert"`
 			LiveFansClubJoinCnt               int     `json:"live_fans_club_join_cnt"`
 			PhoneConnect                      int     `json:"phone_connect"`
 			Id                                int64   `json:"id"`
@@ -420,7 +420,7 @@ type ReportAdGetResult struct {
 			TotalPage   int `json:"total_page"`
 		} `json:"page_info"`
 		List []struct {
-			Show                              int     `json:"show"`
+			Show                              int64   `json:"show"`
 			NextDayOpenRate                   float64 `json:"next_day_open_rate"`
 			PreLoanCreditCost                 float64 `json:"pre_loan_credit_cost"`
 			LubanLiveGiftCnt                  int     `json:"luban_live_gift_cnt"`
@@ -456,22 +456,22 @@ type ReportAdGetResult struct {
 			LubanOrderRoi                     float64 `json:"luban_order_roi"`
 			ActiveCost                        float64 `json:"active_cost"`
 			AttributionDeepConvertCost        float64 `json:"attribution_deep_convert_cost"`
-			AttributionDeepConvert            int     `json:"attribution_deep_convert"`
+			AttributionDeepConvert            int64   `json:"attribution_deep_convert"`
 			NextDayOpen                       int     `json:"next_day_open"`
 			InstallFinish                     int     `json:"install_finish"`
 			DownloadFinishCost                float64 `json:"download_finish_cost"`
 			ConvertCost                       float64 `json:"convert_cost"`
 			ActiveRate                        float64 `json:"active_rate"`
-			CampaignId                        string  `json:"campaign_id"`
+			CampaignId                        int64   `json:"campaign_id"`
 			AdvancedCreativeCouponAddition    int     `json:"advanced_creative_coupon_addition"`
 			ActivePayCost                     float64 `json:"active_pay_cost"`
 			PoiAddressClick                   int     `json:"poi_address_click"`
 			Cost                              float64 `json:"cost"`
 			LoanCompletion                    int     `json:"loan_completion"`
 			LubanLiveShareCnt                 int     `json:"luban_live_share_cnt"`
-			Download                          int     `json:"download"`
+			Download                          int64   `json:"download"`
 			WechatLoginCost                   float64 `json:"wechat_login_cost"`
-			Click                             int     `json:"click"`
+			Click                             int64   `json:"click"`
 			InstallFinishRate                 float64 `json:"install_finish_rate"`
 			AttributionWechatFirstPay30DCost  float64 `json:"attribution_wechat_first_pay_30d_cost"`
 			Play75FeedBreak                   int     `json:"play_75_feed_break"`
@@ -484,21 +484,21 @@ type ReportAdGetResult struct {
 			AttributionNextDayOpenCost        float64 `json:"attribution_next_day_open_cost"`
 			PlayOverRate                      float64 `json:"play_over_rate"`
 			Play50FeedBreak                   int     `json:"play_50_feed_break"`
-			AdId                              string  `json:"ad_id"`
+			AdId                              int64   `json:"ad_id"`
 			ClickCallDy                       int     `json:"click_call_dy"`
 			IesChallengeClick                 int     `json:"ies_challenge_click"`
-			Active                            int     `json:"active"`
+			Active                            int64   `json:"active"`
 			Lottery                           int     `json:"lottery"`
 			LoanCompletionRate                float64 `json:"loan_completion_rate"`
 			WifiPlay                          int     `json:"wifi_play"`
-			Convert                           int     `json:"convert"`
+			Convert                           int64   `json:"convert"`
 			Ctr                               float64 `json:"ctr"`
 			AvgClickCost                      float64 `json:"avg_click_cost"`
 			GamePayCost                       int     `json:"game_pay_cost"`
 			DeepConvertCost                   float64 `json:"deep_convert_cost"`
 			AttributionWechatPay30DRoi        float64 `json:"attribution_wechat_pay_30d_roi"`
 			Wechat                            int     `json:"wechat"`
-			View                              int     `json:"view"`
+			View                              int64   `json:"view"`
 			AttributionConvertCost            float64 `json:"attribution_convert_cost"`
 			ConsultEffective                  int     `json:"consult_effective"`
 			Comment                           int     `json:"comment"`
@@ -533,7 +533,7 @@ type ReportAdGetResult struct {
 			CardShow                          int     `json:"card_show"`
 			MapSearch                         int     `json:"map_search"`
 			InAppOrder                        int     `json:"in_app_order"`
-			AttributionConvert                int     `json:"attribution_convert"`
+			AttributionConvert                int64   `json:"attribution_convert"`
 			WechatFirstPayRate                float64 `json:"wechat_first_pay_rate"`
 			AttributionGamePay7DCount         int     `json:"attribution_game_pay_7d_count"`
 			ClickDownload                     int     `json:"click_download"`
@@ -542,7 +542,7 @@ type ReportAdGetResult struct {
 			Share                             int     `json:"share"`
 			ClickInstall                      int     `json:"click_install"`
 			AdvancedCreativeFormSubmit        int     `json:"advanced_creative_form_submit"`
-			DeepConvert                       int     `json:"deep_convert"`
+			DeepConvert                       int64   `json:"deep_convert"`
 			LiveFansClubJoinCnt               int     `json:"live_fans_club_join_cnt"`
 			PhoneConnect                      int     `json:"phone_connect"`
 			Id                                string  `json:"id"`
@@ -619,7 +619,7 @@ type ReportCreativeGetResult struct {
 			TotalPage   int `json:"total_page"`
 		} `json:"page_info"`
 		List []struct {
-			Show                              int     `json:"show"`
+			Show                              int64   `json:"show"`
 			NextDayOpenRate                   float64 `json:"next_day_open_rate"`
 			PreLoanCreditCost                 float64 `json:"pre_loan_credit_cost"`
 			LubanLiveGiftCnt                  int     `json:"luban_live_gift_cnt"`
@@ -655,27 +655,27 @@ type ReportCreativeGetResult struct {
 			LubanOrderRoi                     float64 `json:"luban_order_roi"`
 			ActiveCost                        float64 `json:"active_cost"`
 			AttributionDeepConvertCost        float64 `json:"attribution_deep_convert_cost"`
-			AttributionDeepConvert            int     `json:"attribution_deep_convert"`
+			AttributionDeepConvert            int64   `json:"attribution_deep_convert"`
 			NextDayOpen                       int     `json:"next_day_open"`
 			InstallFinish                     int     `json:"install_finish"`
 			DownloadFinishCost                float64 `json:"download_finish_cost"`
 			ConvertCost                       float64 `json:"convert_cost"`
 			ActiveRate                        float64 `json:"active_rate"`
-			CampaignId                        string  `json:"campaign_id"`
+			CampaignId                        int64   `json:"campaign_id"`
 			AdvancedCreativeCouponAddition    int     `json:"advanced_creative_coupon_addition"`
 			ActivePayCost                     float64 `json:"active_pay_cost"`
 			PoiAddressClick                   int     `json:"poi_address_click"`
 			Cost                              float64 `json:"cost"`
 			LoanCompletion                    int     `json:"loan_completion"`
 			LubanLiveShareCnt                 int     `json:"luban_live_share_cnt"`
-			Download                          int     `json:"download"`
+			Download                          int64   `json:"download"`
 			WechatLoginCost                   float64 `json:"wechat_login_cost"`
-			Click                             int     `json:"click"`
+			Click                             int64   `json:"click"`
 			InstallFinishRate                 float64 `json:"install_finish_rate"`
 			AttributionWechatFirstPay30DCost  float64 `json:"attribution_wechat_first_pay_30d_cost"`
 			Play75FeedBreak                   int     `json:"play_75_feed_break"`
 			Play25FeedBreak                   int     `json:"play_25_feed_break"`
-			CreativeId                        string  `json:"creative_id"`
+			CreativeId                        int64   `json:"creative_id"`
 			DownloadStartCost                 float64 `json:"download_start_cost"`
 			RedirectToShop                    int     `json:"redirect_to_shop"`
 			WechatFirstPayCount               int     `json:"wechat_first_pay_count"`
@@ -684,21 +684,21 @@ type ReportCreativeGetResult struct {
 			AttributionNextDayOpenCost        float64 `json:"attribution_next_day_open_cost"`
 			PlayOverRate                      float64 `json:"play_over_rate"`
 			Play50FeedBreak                   int     `json:"play_50_feed_break"`
-			AdId                              string  `json:"ad_id"`
+			AdId                              int64   `json:"ad_id"`
 			ClickCallDy                       int     `json:"click_call_dy"`
 			IesChallengeClick                 int     `json:"ies_challenge_click"`
-			Active                            int     `json:"active"`
+			Active                            int64   `json:"active"`
 			Lottery                           int     `json:"lottery"`
 			LoanCompletionRate                float64 `json:"loan_completion_rate"`
 			WifiPlay                          int     `json:"wifi_play"`
-			Convert                           int     `json:"convert"`
+			Convert                           int64   `json:"convert"`
 			Ctr                               float64 `json:"ctr"`
 			AvgClickCost                      float64 `json:"avg_click_cost"`
 			GamePayCost                       int     `json:"game_pay_cost"`
 			DeepConvertCost                   float64 `json:"deep_convert_cost"`
 			AttributionWechatPay30DRoi        float64 `json:"attribution_wechat_pay_30d_roi"`
 			Wechat                            int     `json:"wechat"`
-			View                              int     `json:"view"`
+			View                              int64   `json:"view"`
 			AttributionConvertCost            float64 `json:"attribution_convert_cost"`
 			ConsultEffective                  int     `json:"consult_effective"`
 			Comment                           int     `json:"comment"`
@@ -733,7 +733,7 @@ type ReportCreativeGetResult struct {
 			CardShow                          int     `json:"card_show"`
 			MapSearch                         int     `json:"map_search"`
 			InAppOrder                        int     `json:"in_app_order"`
-			AttributionConvert                int     `json:"attribution_convert"`
+			AttributionConvert                int64   `json:"attribution_convert"`
 			WechatFirstPayRate                float64 `json:"wechat_first_pay_rate"`
 			AttributionGamePay7DCount         int     `json:"attribution_game_pay_7d_count"`
 			ClickDownload                     int     `json:"click_download"`
@@ -742,7 +742,7 @@ type ReportCreativeGetResult struct {
 			Share                             int     `json:"share"`
 			ClickInstall                      int     `json:"click_install"`
 			AdvancedCreativeFormSubmit        int     `json:"advanced_creative_form_submit"`
-			DeepConvert                       int     `json:"deep_convert"`
+			DeepConvert                       int64   `json:"deep_convert"`
 			LiveFansClubJoinCnt               int     `json:"live_fans_club_join_cnt"`
 			PhoneConnect                      int     `json:"phone_connect"`
 			Id                                string  `json:"id"`
