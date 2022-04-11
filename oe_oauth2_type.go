@@ -4,12 +4,12 @@ type AccessTokenResult struct {
 	Code    int    `json:"code"`
 	Message string `json:"message"`
 	Data    struct {
-		AccessToken           string `json:"access_token"`
-		ExpiresIn             int    `json:"expires_in"`
-		RefreshToken          string `json:"refresh_token"`
-		AdvertiserId          int    `json:"advertiser_id"`
-		AdvertiserIds         []int  `json:"advertiser_ids"`
-		RefreshTokenExpiresIn int    `json:"refresh_token_expires_in"`
+		AccessToken           string  `json:"access_token"`
+		ExpiresIn             int     `json:"expires_in"`
+		RefreshToken          string  `json:"refresh_token"`
+		AdvertiserId          int64   `json:"advertiser_id"`
+		AdvertiserIds         []int64 `json:"advertiser_ids"`
+		RefreshTokenExpiresIn int     `json:"refresh_token_expires_in"`
 	} `json:"data"`
 }
 
