@@ -15,7 +15,7 @@ type AdGetParams struct {
 		CampaignId   int64    `json:"campaign_id,omitempty"`    // 按广告组id过滤
 		AdCreateTime string   `json:"ad_create_time,omitempty"` // 广告计划创建时间，格式yyyy-mm-dd，表示过滤出当天创建的广告计划
 		AdModifyTime string   `json:"ad_modify_time,omitempty"` // 广告计划更新时间，格式yyyy-mm-dd，表示过滤出当天更新的广告计划
-	} `json:"filtering,omitempty"` // 过滤条件，若此字段不传，或传空则视为无限制条件
+	} `json:"filtering,omitempty"`                 // 过滤条件，若此字段不传，或传空则视为无限制条件
 	Fields   []string `json:"fields,omitempty"`    // 查询字段集合, 如果指定, 则返回结果数组中，不支持audience下字段筛选
 	Page     int32    `json:"page,omitempty"`      // 页数默认值: 1，page范围为[1,99999]
 	PageSize int32    `json:"page_size,omitempty"` // 页面大小默认值:10，page_size范围为[1,100]
@@ -112,7 +112,7 @@ type AdGetResult struct {
 			DownloadMode               string        `json:"download_mode"`
 			DpaProducts                interface{}   `json:"dpa_products"`
 			SmartInventory             string        `json:"smart_inventory"`
-			RoiGoal                    interface{}   `json:"roi_goal"`
+			RoiGoal                    float64       `json:"roi_goal"`
 			TrackUrlGroupType          interface{}   `json:"track_url_group_type"`
 			DpaCity                    interface{}   `json:"dpa_city"`
 			InheritedAdvertiserId      interface{}   `json:"inherited_advertiser_id"`
