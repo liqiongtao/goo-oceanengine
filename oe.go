@@ -46,7 +46,7 @@ func (oe oceanengine) request(method, url string, data []byte, rst interface{}, 
 	if err = json.Unmarshal(b, &rsp); err != nil {
 		return
 	}
-	if rsp["code"].(int) > 0 {
+	if rsp["code"].(float64) > 0 {
 		err = errors.New(rsp["message"].(string))
 		return
 	}
