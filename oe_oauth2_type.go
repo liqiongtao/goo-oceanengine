@@ -28,17 +28,18 @@ type RefreshTokenResult struct {
 type AdvertiserGetResult struct {
 	Code int `json:"code"`
 	Data struct {
-		List []struct {
-			AccountRole    string        `json:"account_role"`
-			AdvertiserId   int64         `json:"advertiser_id"`
-			AdvertiserName string        `json:"advertiser_name"`
-			AdvertiserRole int           `json:"advertiser_role"`
-			Companist      []interface{} `json:"companist"`
-			IsValid        bool          `json:"is_valid"`
-		} `json:"list"`
+		List []AdvertiserInfo `json:"list"`
 	} `json:"data"`
 	Message   string `json:"message"`
 	RequestId string `json:"request_id"`
+}
+
+type AdvertiserInfo struct {
+	AccountRole    string `json:"account_role"`
+	AdvertiserId   int64  `json:"advertiser_id"`
+	AdvertiserName string `json:"advertiser_name"`
+	AdvertiserRole int    `json:"advertiser_role"`
+	IsValid        bool   `json:"is_valid"`
 }
 
 type UserInfoResult struct {

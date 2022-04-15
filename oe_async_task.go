@@ -13,7 +13,7 @@ type asyncTask struct {
 }
 
 // 创建异步任务
-// https://open.oceanengine.com/doc/index.html?key=ad&type=api&id=1696710562799616#item-link-%E8%AF%B7%E6%B1%82%E5%9C%B0%E5%9D%80
+// https://open.oceanengine.com/labels/7/docs/1696710562799616
 // 创建异步任务，每个开发者每天最多只能为每个用户创建 10 个任务（不包括提交失败的任务）。
 // 当前支持两种报表类型：普通报表和 DPA 报表
 // 注意：

@@ -13,7 +13,7 @@ type ad struct {
 }
 
 // 获取广告计划
-// https://open.oceanengine.com/doc/index.html?key=ad&type=api&id=1696710535150604#item-link-%E8%AF%B7%E6%B1%82%E5%9C%B0%E5%9D%80
+// https://open.oceanengine.com/labels/7/docs/1696710535150604
 // 此接口用于获取广告计划列表的信息；
 func (ad_ ad) Get(params AdGetParams, accessToken string) (rst AdGetResult) {
 	opt := goo_http_request.HeaderOption("Access-Token", accessToken)

@@ -14,7 +14,7 @@ type majordomo struct {
 }
 
 // 获取纵横组织下资产账户列表
-// https://open.oceanengine.com/doc/index.html?key=ad&type=api&id=1696710519607296#item-link-%E8%AF%B7%E6%B1%82%E5%9C%B0%E5%9D%80
+// https://open.oceanengine.com/labels/7/docs/1696710519607296
 // 获取纵横组织下的广告主ID列表。
 func (r majordomo) AdvertiserSelect(advertiserId int64, accessToken string) (rst AdvertiserSelectResult) {
 	data := fmt.Sprintf(`{"advertiser_id":%d}`, advertiserId)

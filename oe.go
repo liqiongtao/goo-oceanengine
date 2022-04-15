@@ -13,6 +13,8 @@ type oceanengine struct {
 func (oe oceanengine) request(method, url string, data []byte, rst interface{}, opts ...goo_http_request.Option) (err error) {
 	r := goo_http_request.New(opts...)
 
+	r.SetTimeout(30 * time.Second)
+
 	if oe.config.Debug {
 		r.Debug()
 		r.SetHeader("X-Debug-Mode", "1")
@@ -47,7 +49,7 @@ func (oe oceanengine) request(method, url string, data []byte, rst interface{}, 
 func (oe oceanengine) get(url string, data []byte, rst interface{}, opts ...goo_http_request.Option) (err error) {
 	for i := 0; i < 5; i++ {
 		if err = oe.request("GET", url, data, rst, opts...); err != nil {
-			time.Sleep(time.Second)
+			time.Sleep(time.Duration(i+1) * time.Second)
 			continue
 		}
 		break
@@ -58,7 +60,7 @@ func (oe oceanengine) get(url string, data []byte, rst interface{}, opts ...goo_
 func (oe oceanengine) post(url string, data []byte, rst interface{}, opts ...goo_http_request.Option) (err error) {
 	for i := 0; i < 5; i++ {
 		if err = oe.request("POST", url, data, rst, opts...); err != nil {
-			time.Sleep(time.Second)
+			time.Sleep(time.Duration(i+1) * time.Second)
 			continue
 		}
 		break

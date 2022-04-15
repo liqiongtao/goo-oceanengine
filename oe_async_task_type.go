@@ -107,16 +107,18 @@ type AsyncTaskGetResult struct {
 			PageSize    int `json:"page_size"`
 			TotalPage   int `json:"total_page"`
 		} `json:"page_info"`
-		List []struct {
-			TaskId     int    `json:"task_id"`
-			ErrMsg     string `json:"err_msg"`
-			CreateTime string `json:"create_time"`
-			TaskName   string `json:"task_name"`
-			FileSize   int    `json:"file_size"`
-			TaskStatus string `json:"task_status"`
-		} `json:"list"`
+		List []AsyncTaskInfo `json:"list"`
 	} `json:"data"`
 	RequestId string `json:"request_id"`
+}
+
+type AsyncTaskInfo struct {
+	TaskId     int    `json:"task_id"`
+	ErrMsg     string `json:"err_msg"`
+	CreateTime string `json:"create_time"`
+	TaskName   string `json:"task_name"`
+	FileSize   int    `json:"file_size"`
+	TaskStatus string `json:"task_status"`
 }
 
 // 下载任务结果 - 请求参数

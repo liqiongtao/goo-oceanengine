@@ -13,7 +13,7 @@ type report struct {
 }
 
 // 广告主数据
-// https://open.oceanengine.com/doc/index.html?key=ad&type=api&id=1696710550620160#item-link-%E8%AF%B7%E6%B1%82%E5%9C%B0%E5%9D%80
+// https://open.oceanengine.com/labels/7/docs/1696710550620160
 // 此接口用于获取广告账户维度的投放数据，包括消耗、点击、展示等指标，具体可以参考应答参数指标说明。
 // 数据更新频率:
 // 数据5～10分钟更新一次
@@ -29,7 +29,7 @@ func (r report) AdvertiserGet(params ReportAdvertiserGetParams, accessToken stri
 }
 
 // 广告组数据
-// https://open.oceanengine.com/doc/index.html?key=ad&type=api&id=1696710551161856#item-link-%E8%AF%B7%E6%B1%82%E5%9C%B0%E5%9D%80
+// https://open.oceanengine.com/labels/7/docs/1696710551161856
 // 此接口用于获取广告组纬度的投放数据，包括消耗、点击、展示等指标，具体可以参考应答参数指标说明。
 // 数据更新频率:
 // 数据5～10分钟更新一次
@@ -45,7 +45,7 @@ func (r report) CampaignGet(params ReportCampaignGetParams, accessToken string) 
 }
 
 // 广告计划数据
-// https://open.oceanengine.com/doc/index.html?key=ad&type=api&id=1696710551666703#item-link-%E8%AF%B7%E6%B1%82%E5%9C%B0%E5%9D%80
+// https://open.oceanengine.com/labels/7/docs/1696710551666703
 // 此接口用于获取广告组纬度的投放数据，包括消耗、点击、展示等指标，具体可以参考应答参数指标说明。
 // 数据更新频率:
 // 数据5～10分钟更新一次
@@ -61,7 +61,7 @@ func (r report) AdGet(params ReportAdGetParams, accessToken string) (rst ReportA
 }
 
 // 广告创意数据
-// https://open.oceanengine.com/doc/index.html?key=ad&type=api&id=1696710552261644#item-link-%E8%AF%B7%E6%B1%82%E5%9C%B0%E5%9D%80
+// https://open.oceanengine.com/labels/7/docs/1696710552261644
 // 此接口用于获取广告组纬度的投放数据，包括消耗、点击、展示等指标，具体可以参考应答参数指标说明。
 // 数据更新频率:
 // 数据5～10分钟更新一次

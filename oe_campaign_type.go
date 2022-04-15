@@ -29,27 +29,7 @@ type CampaignGetResult struct {
 	Message   string `json:"message"`
 	RequestId string `json:"request_id"`
 	Data      struct {
-		List []struct {
-			MarketingScene       string  `json:"marketing_scene"`
-			DedicateType         string  `json:"dedicate_type"`
-			ModifyTime           string  `json:"modify_time"`
-			Name                 string  `json:"name"`
-			SmartBidType         string  `json:"smart_bid_type"`
-			DeliveryMode         string  `json:"delivery_mode"`
-			CampaignId           int64   `json:"campaign_id"`
-			Budget               float64 `json:"budget"`
-			CampaignCreateTime   string  `json:"campaign_create_time"`
-			CampaignModifyTime   string  `json:"campaign_modify_time"`
-			LandingType          string  `json:"landing_type"`
-			MarketingPurpose     string  `json:"marketing_purpose"`
-			Id                   int64   `json:"id"`
-			AdvertiserId         int64   `json:"advertiser_id"`
-			CampaignType         string  `json:"campaign_type"`
-			Status               string  `json:"status"`
-			BudgetMode           string  `json:"budget_mode"`
-			DeliveryRelatedNum   string  `json:"delivery_related_num"`
-			BudgetOptimizeSwitch string  `json:"budgetOptimizeSwitch"`
-		} `json:"list"`
+		List     []CampaignInfo `json:"list"`
 		PageInfo struct {
 			Page        int `json:"page"`
 			PageSize    int `json:"page_size"`
@@ -57,4 +37,26 @@ type CampaignGetResult struct {
 			TotalPage   int `json:"total_page"`
 		} `json:"page_info"`
 	} `json:"data"`
+}
+
+type CampaignInfo struct {
+	MarketingScene       string  `json:"marketing_scene"`
+	DedicateType         string  `json:"dedicate_type"`
+	ModifyTime           string  `json:"modify_time"`
+	Name                 string  `json:"name"`
+	SmartBidType         string  `json:"smart_bid_type"`
+	DeliveryMode         string  `json:"delivery_mode"`
+	CampaignId           int64   `json:"campaign_id"`
+	Budget               float64 `json:"budget"`
+	CampaignCreateTime   string  `json:"campaign_create_time"`
+	CampaignModifyTime   string  `json:"campaign_modify_time"`
+	LandingType          string  `json:"landing_type"`
+	MarketingPurpose     string  `json:"marketing_purpose"`
+	Id                   int64   `json:"id"`
+	AdvertiserId         int64   `json:"advertiser_id"`
+	CampaignType         string  `json:"campaign_type"`
+	Status               string  `json:"status"`
+	BudgetMode           string  `json:"budget_mode"`
+	DeliveryRelatedNum   string  `json:"delivery_related_num"`
+	BudgetOptimizeSwitch string  `json:"budgetOptimizeSwitch"`
 }
