@@ -78,8 +78,3 @@ func (oe oceanengine) post(url string, data []byte, rst interface{}, opts ...goo
 	}
 	return
 }
-
-func (oe oceanengine) Debug() oceanengine {
-	oe.config.Debug = true
-	return oe
-}
