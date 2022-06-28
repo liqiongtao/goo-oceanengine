@@ -1,5 +1,20 @@
 package goo_oceanengine
 
+import "encoding/json"
+
+type Result struct {
+	Message string `json:"message"`
+	Code    int    `json:"code"`
+	Data    struct {
+	} `json:"data"`
+	RequestId string `json:"request_id"`
+}
+
+type DataSourceFileUploadParams struct {
+	AdvertiserId int64  `json:"advertiser_id"` // 广告主ID
+	File         string `json:"file"`          // 文件
+}
+
 type DataSourceFileUploadResult struct {
 	Message string `json:"message"`
 	Code    int    `json:"code"`
@@ -7,6 +22,24 @@ type DataSourceFileUploadResult struct {
 		FilePath string `json:"file_path"`
 	} `json:"data"`
 	RequestId string `json:"request_id"`
+}
+
+type DataSourceCreateParams struct {
+	AdvertiserId    int64    `json:"advertiser_id"`     // 广告主ID
+	DataSourceName  string   `json:"data_source_name"`  // 数据源名称, 限30个字符内
+	Description     string   `json:"description"`       // 数据源描述, 限256个字符内
+	DataFormat      int      `json:"data_format"`       // 数据格式, 枚举值:"0"：ProtocolBuffer
+	FileStorageType int      `json:"file_storage_type"` // 数据存储类型, 枚举值:"0"：API
+	FilePaths       []string `json:"file_paths"`        // 通过【数据源文件上传】接口得到的文件路径，注意：一次上传最多1000个
+
+	// 投放数据源类型，枚举值如下: "UID"：用户ID, "DID"：设备ID ,默认值： "UID"
+	// 人群类型仅IMEI、IDFA、IMEI-MD5、IDFA-MD5、OAID、OAID_MD5支持DID投放
+	DataSourceType string
+}
+
+func (p DataSourceCreateParams) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
 }
 
 type DataSourceCreateResult struct {
@@ -18,16 +51,44 @@ type DataSourceCreateResult struct {
 	RequestId string `json:"request_id"`
 }
 
+type DataSourceUpdateParams struct {
+	AdvertiserId    int64    `json:"advertiser_id"`     // 广告主ID
+	DataSourceId    string   `json:"data_source_id"`    // 数据源ID
+	OperationType   int      `json:"operation_type"`    // 更新操作类型, 枚举值："1" ：添加,"2"：删除, "3"：重置
+	DataFormat      int      `json:"data_format"`       // 数据格式, 枚举值:"0"：ProtocolBuffer
+	FileStorageType int      `json:"file_storage_type"` // 数据存储类型, 枚举值:"0"：API
+	FilePaths       []string `json:"file_paths"`        // 通过【数据源文件上传】接口得到的文件路径，注意：一次上传最多1000个
+
+	// 投放数据源类型，枚举值如下: "UID"：用户ID, "DID"：设备ID ,默认值： "UID"
+	// 人群类型仅IMEI、IDFA、IMEI-MD5、IDFA-MD5、OAID、OAID_MD5支持DID投放
+	DataSourceType string `json:"data_source_type"`
+}
+
+func (p DataSourceUpdateParams) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
+}
+
+type DataSourceReadParams struct {
+	AdvertiserId     int64    `json:"advertiser_id"`       // 广告主ID
+	DataSourceIdList []string `json:"data_source_id_list"` // 数据源ID列表 一次最多传400个数据源id
+}
+
+func (p DataSourceReadParams) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
+}
+
 type DataSourceReadResult struct {
 	Message string `json:"message"`
 	Code    int    `json:"code"`
 	Data    struct {
-		DataList []DataSourceListItem `json:"data_list"`
+		DataList []DataSourceReadListItem `json:"data_list"`
 	} `json:"data"`
 	RequestId string `json:"request_id"`
 }
 
-type DataSourceListItem struct {
+type DataSourceReadListItem struct {
 	Status      int    `json:"status"`
 	Description string `json:"description"`
 	ChangeLogs  []struct {
@@ -72,6 +133,18 @@ type DataSourceListItem struct {
 	Name                        string `json:"name"`
 }
 
+type CustomAudienceSelectParams struct {
+	AdvertiserId int64 `json:"advertiser_id"` // 广告主ID
+	SelectType   int   `json:"select_type"`   // 数据源ID列表 一次最多传400个数据源id
+	Offset       int   `json:"offset"`        // 偏移,类似于SQL中offset(起始为0,翻页时new_offset=old_offset+limit），默认值：0，取值范围:≥ 0
+	Limit        int   `json:"limit"`         // 返回数据量，默认值：100，取值范围：1-100
+}
+
+func (p CustomAudienceSelectParams) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
+}
+
 type CustomAudienceSelectResult struct {
 	Message string `json:"message"`
 	Code    int    `json:"code"`
@@ -93,6 +166,16 @@ type CustomAudienceSelectListItem struct {
 	UploadNum        int    `json:"upload_num"`
 	CoverNum         int    `json:"cover_num"`
 	DataSourceId     string `json:"data_source_id"`
+}
+
+type CustomAudienceReadParams struct {
+	AdvertiserId      int64   `json:"advertiser_id"`       // 广告主ID
+	CustomAudienceIds []int64 `json:"custom_audience_ids"` // 人群包ID列表，长度取值范围：1-100
+}
+
+func (p CustomAudienceReadParams) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
 }
 
 type CustomAudienceReadResult struct {
@@ -122,12 +205,35 @@ type CustomAudienceReadListItem struct {
 	ExistPullOffTag  int    `json:"exist_pull_off_tag"`
 }
 
-type Result struct {
-	Message string `json:"message"`
-	Code    int    `json:"code"`
-	Data    struct {
-	} `json:"data"`
-	RequestId string `json:"request_id"`
+type CustomAudiencePublishParams struct {
+	AdvertiserId     int64 `json:"advertiser_id"`      // 广告主ID
+	CustomAudienceId int64 `json:"custom_audience_id"` // 人群包ID
+}
+
+func (p CustomAudiencePublishParams) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
+}
+
+type CustomAudiencePushV2Params struct {
+	AdvertiserId        int64   `json:"advertiser_id"`         // 人群包所属广告主ID
+	CustomAudienceId    int64   `json:"custom_audience_id"`    // 人群包ID
+	TargetAdvertiserIds []int64 `json:"target_advertiser_ids"` // 推送广告主ID列表，最多推送100个广告主
+}
+
+func (p CustomAudiencePushV2Params) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
+}
+
+type CustomAudienceDeleteParams struct {
+	AdvertiserId     int64 `json:"advertiser_id"`      // 广告主ID
+	CustomAudienceId int64 `json:"custom_audience_id"` // 人群包ID
+}
+
+func (p CustomAudienceDeleteParams) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
 }
 
 type CustomAudienceDeleteResult struct {

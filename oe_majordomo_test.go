@@ -11,7 +11,7 @@ func TestMajordomo_AdvertiserSelect(t *testing.T) {
 	rst := Majordomo(Config{
 		AppId:  "",
 		Secret: "",
-	}).AdvertiserSelect(1718542607453191, accessToken)
+	}).AdvertiserSelect(0, accessToken)
 
 	fmt.Println(rst)
 }
