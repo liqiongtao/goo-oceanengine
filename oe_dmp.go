@@ -48,7 +48,7 @@ func (d dmp) DataSourceCreate(p DataSourceCreateParams, accessToken string) (rst
 	opt := goo_http_request.HeaderOption("Access-Token", accessToken)
 
 	rst = DataSourceCreateResult{}
-	if err := d.get(DMP_DATASOURCE_CREATE_URL, p.Json(), &rst, opt); err != nil {
+	if err := d.post(DMP_DATASOURCE_CREATE_URL, p.Json(), &rst, opt); err != nil {
 		rst = DataSourceCreateResult{Code: 5001, Message: err.Error()}
 	}
 	return
@@ -60,7 +60,7 @@ func (d dmp) DataSourceUpdate(p DataSourceUpdateParams, accessToken string) (rst
 	opt := goo_http_request.HeaderOption("Access-Token", accessToken)
 
 	rst = Result{}
-	if err := d.get(DMP_DATASOURCE_UPDATE_URL, p.Json(), &rst, opt); err != nil {
+	if err := d.post(DMP_DATASOURCE_UPDATE_URL, p.Json(), &rst, opt); err != nil {
 		rst = Result{Code: 5001, Message: err.Error()}
 	}
 	return
@@ -108,7 +108,7 @@ func (d dmp) CustomAudiencePublish(p CustomAudiencePublishParams, accessToken st
 	opt := goo_http_request.HeaderOption("Access-Token", accessToken)
 
 	rst = Result{}
-	if err := d.get(DMP_CUSTOM_AUDIENCE_PUBLISH_URL, p.Json(), &rst, opt); err != nil {
+	if err := d.post(DMP_CUSTOM_AUDIENCE_PUBLISH_URL, p.Json(), &rst, opt); err != nil {
 		rst = Result{Code: 5001, Message: err.Error()}
 	}
 	return
@@ -120,7 +120,7 @@ func (d dmp) CustomAudiencePushV2(p CustomAudiencePushV2Params, accessToken stri
 	opt := goo_http_request.HeaderOption("Access-Token", accessToken)
 
 	rst = Result{}
-	if err := d.get(DMP_CUSTOM_AUDIENCE_PUSH_V2_URL, p.Json(), &rst, opt); err != nil {
+	if err := d.post(DMP_CUSTOM_AUDIENCE_PUSH_V2_URL, p.Json(), &rst, opt); err != nil {
 		rst = Result{Code: 5001, Message: err.Error()}
 	}
 	return
@@ -132,7 +132,7 @@ func (d dmp) CustomAudienceDelete(p CustomAudienceDeleteParams, accessToken stri
 	opt := goo_http_request.HeaderOption("Access-Token", accessToken)
 
 	rst = CustomAudienceDeleteResult{}
-	if err := d.get(DMP_CUSTOM_AUDIENCE_DELETE_URL, p.Json(), &rst, opt); err != nil {
+	if err := d.post(DMP_CUSTOM_AUDIENCE_DELETE_URL, p.Json(), &rst, opt); err != nil {
 		rst = CustomAudienceDeleteResult{Code: 5001, Message: err.Error()}
 	}
 	return
