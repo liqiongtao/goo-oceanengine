@@ -7,4 +7,5 @@ type Config struct {
 	Secret  string        `yaml:"secret"`
 	Debug   bool          `yaml:"debug"`
 	Timeout time.Duration `yaml:"timeout"`
+	Retry   int           `yaml:"retry"`
 }

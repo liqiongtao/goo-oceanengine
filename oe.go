@@ -22,7 +22,12 @@ func (oe oceanengine) get(url string, data []byte, rst interface{}, opts ...goo_
 		opts:    opts,
 	}
 
-	for i := 0; i < 5; i++ {
+	retry := oe.config.Retry
+	if retry == 0 {
+		retry = 1
+	}
+
+	for i := 0; i < retry; i++ {
 		if err = r.doHandle(rst); err != nil {
 			time.Sleep(time.Duration(i+1) * time.Second)
 			continue
@@ -43,7 +48,12 @@ func (oe oceanengine) post(url string, data []byte, rst interface{}, opts ...goo
 		opts:    opts,
 	}
 
-	for i := 0; i < 5; i++ {
+	retry := oe.config.Retry
+	if retry == 0 {
+		retry = 1
+	}
+
+	for i := 0; i < retry; i++ {
 		if err = r.doHandle(rst); err != nil {
 			time.Sleep(time.Duration(i+1) * time.Second)
 			continue
@@ -67,7 +77,12 @@ func (oe oceanengine) uploadFile(url, fileName string, fh io.Reader, data map[st
 		opts:        opts,
 	}
 
-	for i := 0; i < 5; i++ {
+	retry := oe.config.Retry
+	if retry == 0 {
+		retry = 1
+	}
+
+	for i := 0; i < retry; i++ {
 		if err = r.doHandle(rst); err != nil {
 			time.Sleep(time.Duration(i+1) * time.Second)
 			continue
