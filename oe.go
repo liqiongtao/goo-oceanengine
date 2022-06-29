@@ -14,11 +14,12 @@ type oceanengine struct {
 
 func (oe oceanengine) get(url string, data []byte, rst interface{}, opts ...goo_http_request.Option) (err error) {
 	r := request{
-		debug:  oe.config.Debug,
-		method: "GET",
-		url:    url,
-		data:   data,
-		opts:   opts,
+		debug:   oe.config.Debug,
+		timeout: oe.config.Timeout,
+		method:  "GET",
+		url:     url,
+		data:    data,
+		opts:    opts,
 	}
 
 	for i := 0; i < 5; i++ {
@@ -34,11 +35,12 @@ func (oe oceanengine) get(url string, data []byte, rst interface{}, opts ...goo_
 
 func (oe oceanengine) post(url string, data []byte, rst interface{}, opts ...goo_http_request.Option) (err error) {
 	r := request{
-		debug:  oe.config.Debug,
-		method: "POST",
-		url:    url,
-		data:   data,
-		opts:   opts,
+		debug:   oe.config.Debug,
+		timeout: oe.config.Timeout,
+		method:  "POST",
+		url:     url,
+		data:    data,
+		opts:    opts,
 	}
 
 	for i := 0; i < 5; i++ {
@@ -55,6 +57,7 @@ func (oe oceanengine) post(url string, data []byte, rst interface{}, opts ...goo
 func (oe oceanengine) uploadFile(url, fileName string, fh io.Reader, data map[string]string, rst interface{}, opts ...goo_http_request.Option) (err error) {
 	r := request{
 		debug:       oe.config.Debug,
+		timeout:     oe.config.Timeout,
 		method:      "UPLOAD",
 		url:         url,
 		fileField:   "file",
@@ -78,8 +81,9 @@ func (oe oceanengine) uploadFile(url, fileName string, fh io.Reader, data map[st
 type request struct {
 	debug bool
 
-	method string
-	url    string
+	method  string
+	url     string
+	timeout time.Duration
 
 	data []byte
 
@@ -94,7 +98,10 @@ type request struct {
 func (re request) doHandle(rst interface{}) (err error) {
 	r := goo_http_request.New(re.opts...)
 
-	r.SetTimeout(30 * time.Second)
+	if re.timeout == 0 {
+		re.timeout = 30 * time.Second
+	}
+	r.SetTimeout(re.timeout)
 
 	if re.debug {
 		r.Debug()

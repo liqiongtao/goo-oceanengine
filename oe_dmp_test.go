@@ -5,18 +5,19 @@ import (
 	"testing"
 )
 
-func TestDMP(t *testing.T) {
+func TestDmp_DataSourceFileUpload(t *testing.T) {
 	accessToken := ""
 
-	params := CustomAudienceSelectParams{
+	params := DataSourceFileUploadParams{
 		AdvertiserId: 0,
-		SelectType:   0,
+		File:         "",
 	}
 
 	rst := DMP(Config{
 		AppId:  "",
 		Secret: "",
-	}).CustomAudienceSelect(params, accessToken)
+		Debug:  true,
+	}).DataSourceFileUpload(params, accessToken)
 
 	fmt.Println(rst)
 }
