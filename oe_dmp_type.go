@@ -10,6 +10,11 @@ type Result struct {
 	RequestId string `json:"request_id"`
 }
 
+func (p Result) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
+}
+
 type DataSourceFileUploadParams struct {
 	AdvertiserId int64  `json:"advertiser_id"` // 广告主ID
 	File         string `json:"file"`          // 文件
@@ -22,6 +27,11 @@ type DataSourceFileUploadResult struct {
 		FilePath string `json:"file_path"`
 	} `json:"data"`
 	RequestId string `json:"request_id"`
+}
+
+func (p DataSourceFileUploadResult) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
 }
 
 type DataSourceCreateParams struct {
@@ -49,6 +59,11 @@ type DataSourceCreateResult struct {
 		DataSourceId string `json:"data_source_id"`
 	} `json:"data"`
 	RequestId string `json:"request_id"`
+}
+
+func (p DataSourceCreateResult) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
 }
 
 type DataSourceUpdateParams struct {
@@ -86,6 +101,11 @@ type DataSourceReadResult struct {
 		DataList []DataSourceReadListItem `json:"data_list"`
 	} `json:"data"`
 	RequestId string `json:"request_id"`
+}
+
+func (p DataSourceReadResult) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
 }
 
 type DataSourceReadListItem struct {
@@ -155,6 +175,12 @@ type CustomAudienceSelectResult struct {
 	} `json:"data"`
 	RequestId string `json:"request_id"`
 }
+
+func (p CustomAudienceSelectResult) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
+}
+
 type CustomAudienceSelectListItem struct {
 	Status           int    `json:"status"`
 	Name             string `json:"name"`
@@ -185,6 +211,11 @@ type CustomAudienceReadResult struct {
 		CustomAudienceList []CustomAudienceReadListItem `json:"custom_audience_list"`
 	} `json:"data"`
 	RequestId string `json:"request_id"`
+}
+
+func (p CustomAudienceReadResult) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
 }
 
 type CustomAudienceReadListItem struct {
@@ -243,4 +274,9 @@ type CustomAudienceDeleteResult struct {
 		CustomAudienceId int `json:"custom_audience_id"`
 	} `json:"data"`
 	RequestId string `json:"request_id"`
+}
+
+func (p CustomAudienceDeleteResult) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
 }

@@ -39,6 +39,11 @@ type CampaignGetResult struct {
 	} `json:"data"`
 }
 
+func (p CampaignGetResult) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
+}
+
 type CampaignInfo struct {
 	MarketingScene       string  `json:"marketing_scene"`
 	DedicateType         string  `json:"dedicate_type"`

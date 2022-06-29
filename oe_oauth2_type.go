@@ -1,5 +1,7 @@
 package goo_oceanengine
 
+import "encoding/json"
+
 type AccessTokenResult struct {
 	Code    int    `json:"code"`
 	Message string `json:"message"`
@@ -14,6 +16,11 @@ type AccessTokenResult struct {
 	} `json:"data"`
 }
 
+func (p AccessTokenResult) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
+}
+
 type RefreshTokenResult struct {
 	Code    int    `json:"code"`
 	Message string `json:"message"`
@@ -25,6 +32,11 @@ type RefreshTokenResult struct {
 	} `json:"data"`
 }
 
+func (p RefreshTokenResult) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
+}
+
 type AdvertiserGetResult struct {
 	Code int `json:"code"`
 	Data struct {
@@ -32,6 +44,11 @@ type AdvertiserGetResult struct {
 	} `json:"data"`
 	Message   string `json:"message"`
 	RequestId string `json:"request_id"`
+}
+
+func (p AdvertiserGetResult) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
 }
 
 type AdvertiserInfo struct {
@@ -51,4 +68,9 @@ type UserInfoResult struct {
 		DisplayName string `json:"display_name"`
 	} `json:"data"`
 	RequestId string `json:"request_id"`
+}
+
+func (p UserInfoResult) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
 }

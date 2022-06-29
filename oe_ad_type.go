@@ -41,6 +41,11 @@ type AdGetResult struct {
 	} `json:"data"`
 }
 
+func (p AdGetResult) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
+}
+
 type AdInfo struct {
 	AdModifyTime               string        `json:"ad_modify_time"`
 	ParamsType                 string        `json:"params_type"`

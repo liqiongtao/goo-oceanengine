@@ -81,6 +81,11 @@ type AsyncTaskCreateResult struct {
 	RequestId string `json:"request_id"`
 }
 
+func (p AsyncTaskCreateResult) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
+}
+
 // 获取任务列表 - 请求参数
 type AsyncTaskGetParams struct {
 	AdvertiserId int64 `json:"advertiser_id,omitempty"` // 广告主id
@@ -110,6 +115,11 @@ type AsyncTaskGetResult struct {
 		List []AsyncTaskInfo `json:"list"`
 	} `json:"data"`
 	RequestId string `json:"request_id"`
+}
+
+func (p AsyncTaskGetResult) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
 }
 
 type AsyncTaskInfo struct {

@@ -39,6 +39,11 @@ type ReportAdvertiserGetResult struct {
 	RequestId string `json:"request_id"`
 }
 
+func (p ReportAdvertiserGetResult) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
+}
+
 type ReportAdvertiserInfo struct {
 	Show                              int64   `json:"show"`
 	NextDayOpenRate                   float64 `json:"next_day_open_rate"`
@@ -244,6 +249,11 @@ type ReportCampaignGetResult struct {
 		List []ReportCampaignInfo `json:"list"`
 	} `json:"data"`
 	RequestId string `json:"request_id"`
+}
+
+func (p ReportCampaignGetResult) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
 }
 
 type ReportCampaignInfo struct {

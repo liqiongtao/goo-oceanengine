@@ -1,5 +1,7 @@
 package goo_oceanengine
 
+import "encoding/json"
+
 type AdvertiserSelectResult struct {
 	Code int `json:"code"`
 	Data struct {
@@ -7,6 +9,11 @@ type AdvertiserSelectResult struct {
 	} `json:"data"`
 	Message   string `json:"message"`
 	RequestId string `json:"request_id"`
+}
+
+func (p AdvertiserSelectResult) Json() []byte {
+	b, _ := json.Marshal(&p)
+	return b
 }
 
 type AdvertiserSelectItem struct {
