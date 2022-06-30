@@ -44,7 +44,7 @@ type DataSourceCreateParams struct {
 
 	// 投放数据源类型，枚举值如下: "UID"：用户ID, "DID"：设备ID ,默认值： "UID"
 	// 人群类型仅IMEI、IDFA、IMEI-MD5、IDFA-MD5、OAID、OAID_MD5支持DID投放
-	DataSourceType string
+	DataSourceType string `json:"data_source_type"`
 }
 
 func (p DataSourceCreateParams) Json() []byte {
