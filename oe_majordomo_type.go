@@ -3,12 +3,12 @@ package goo_oceanengine
 import "encoding/json"
 
 type AdvertiserSelectResult struct {
-	Code int `json:"code"`
+	Code int `json:"code" bson:"code"`
 	Data struct {
-		List []AdvertiserSelectItem `json:"list"`
-	} `json:"data"`
-	Message   string `json:"message"`
-	RequestId string `json:"request_id"`
+		List []AdvertiserSelectItem `json:"list" bson:"list"`
+	} `json:"data" bson:"data"`
+	Message   string `json:"message" bson:"message"`
+	RequestId string `json:"request_id" bson:"request_id"`
 }
 
 func (p AdvertiserSelectResult) Json() []byte {

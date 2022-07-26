@@ -70,15 +70,15 @@ func (p AsyncTaskCreateParams) Json() []byte {
 }
 
 type AsyncTaskCreateResult struct {
-	Message string `json:"message"`
-	Code    int    `json:"code"`
+	Message string `json:"message" bson:"message"`
+	Code    int    `json:"code" bson:"code"`
 	Data    struct {
-		CreateTime string `json:"create_time"`
-		TaskName   string `json:"task_name"`
-		TaskId     int    `json:"task_id"`
-		TaskStatus string `json:"task_status"`
-	} `json:"data"`
-	RequestId string `json:"request_id"`
+		CreateTime string `json:"create_time" bson:"create_time"`
+		TaskName   string `json:"task_name" bson:"task_name"`
+		TaskId     int    `json:"task_id" bson:"task_id"`
+		TaskStatus string `json:"task_status" bson:"task_status"`
+	} `json:"data" bson:"data"`
+	RequestId string `json:"request_id" bson:"request_id"`
 }
 
 func (p AsyncTaskCreateResult) Json() []byte {
@@ -103,18 +103,18 @@ func (p AsyncTaskGetParams) Json() []byte {
 }
 
 type AsyncTaskGetResult struct {
-	Message string `json:"message"`
-	Code    int    `json:"code"`
+	Message string `json:"message" bson:"message"`
+	Code    int    `json:"code" bson:"code"`
 	Data    struct {
 		PageInfo struct {
-			TotalNumber int `json:"total_number"`
-			Page        int `json:"page"`
-			PageSize    int `json:"page_size"`
-			TotalPage   int `json:"total_page"`
-		} `json:"page_info"`
-		List []AsyncTaskInfo `json:"list"`
-	} `json:"data"`
-	RequestId string `json:"request_id"`
+			TotalNumber int `json:"total_number" bson:"total_number"`
+			Page        int `json:"page" bson:"page"`
+			PageSize    int `json:"page_size" bson:"page_size"`
+			TotalPage   int `json:"total_page" bson:"total_page"`
+		} `json:"page_info" bson:"page_info"`
+		List []AsyncTaskInfo `json:"list" bson:"list"`
+	} `json:"data" bson:"data"`
+	RequestId string `json:"request_id" bson:"request_id"`
 }
 
 func (p AsyncTaskGetResult) Json() []byte {
@@ -123,12 +123,12 @@ func (p AsyncTaskGetResult) Json() []byte {
 }
 
 type AsyncTaskInfo struct {
-	TaskId     int    `json:"task_id"`
-	ErrMsg     string `json:"err_msg"`
-	CreateTime string `json:"create_time"`
-	TaskName   string `json:"task_name"`
-	FileSize   int    `json:"file_size"`
-	TaskStatus string `json:"task_status"`
+	TaskId     int    `json:"task_id" bson:"task_id"`
+	ErrMsg     string `json:"err_msg" bson:"err_msg"`
+	CreateTime string `json:"create_time" bson:"create_time"`
+	TaskName   string `json:"task_name" bson:"task_name"`
+	FileSize   int    `json:"file_size" bson:"file_size"`
+	TaskStatus string `json:"task_status" bson:"task_status"`
 }
 
 // 下载任务结果 - 请求参数

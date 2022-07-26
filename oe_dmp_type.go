@@ -3,11 +3,11 @@ package goo_oceanengine
 import "encoding/json"
 
 type Result struct {
-	Message string `json:"message"`
-	Code    int    `json:"code"`
+	Message string `json:"message" bson:"message"`
+	Code    int    `json:"code" bson:"code"`
 	Data    struct {
-	} `json:"data"`
-	RequestId string `json:"request_id"`
+	} `json:"data" bson:"data"`
+	RequestId string `json:"request_id" bson:"request_id"`
 }
 
 func (p Result) Json() []byte {
@@ -21,12 +21,12 @@ type DataSourceFileUploadParams struct {
 }
 
 type DataSourceFileUploadResult struct {
-	Message string `json:"message"`
-	Code    int    `json:"code"`
+	Message string `json:"message" bson:"message"`
+	Code    int    `json:"code" bson:"code"`
 	Data    struct {
-		FilePath string `json:"file_path"`
-	} `json:"data"`
-	RequestId string `json:"request_id"`
+		FilePath string `json:"file_path" bson:"file_path"`
+	} `json:"data" bson:"data"`
+	RequestId string `json:"request_id" bson:"request_id"`
 }
 
 func (p DataSourceFileUploadResult) Json() []byte {
@@ -53,12 +53,12 @@ func (p DataSourceCreateParams) Json() []byte {
 }
 
 type DataSourceCreateResult struct {
-	Message string `json:"message"`
-	Code    int    `json:"code"`
+	Message string `json:"message" bson:"message"`
+	Code    int    `json:"code" bson:"code"`
 	Data    struct {
-		DataSourceId string `json:"data_source_id"`
-	} `json:"data"`
-	RequestId string `json:"request_id"`
+		DataSourceId string `json:"data_source_id" bson:"data_source_id"`
+	} `json:"data" bson:"data"`
+	RequestId string `json:"request_id" bson:"request_id"`
 }
 
 func (p DataSourceCreateResult) Json() []byte {
@@ -95,12 +95,12 @@ func (p DataSourceReadParams) Json() []byte {
 }
 
 type DataSourceReadResult struct {
-	Message string `json:"message"`
-	Code    int    `json:"code"`
+	Message string `json:"message" bson:"message"`
+	Code    int    `json:"code" bson:"code"`
 	Data    struct {
-		DataList []DataSourceReadListItem `json:"data_list"`
-	} `json:"data"`
-	RequestId string `json:"request_id"`
+		DataList []DataSourceReadListItem `json:"data_list" bson:"data_list"`
+	} `json:"data" bson:"data"`
+	RequestId string `json:"request_id" bson:"request_id"`
 }
 
 func (p DataSourceReadResult) Json() []byte {
@@ -109,48 +109,48 @@ func (p DataSourceReadResult) Json() []byte {
 }
 
 type DataSourceReadListItem struct {
-	Status      int    `json:"status"`
-	Description string `json:"description"`
+	Status      int    `json:"status" bson:"status"`
+	Description string `json:"description" bson:"description"`
 	ChangeLogs  []struct {
-		ChangeLogId   int      `json:"change_log_id"`
-		Status        int      `json:"status"`
-		PublishedTime string   `json:"published_time"`
-		FilePaths     []string `json:"file_paths"`
-		CreateTime    string   `json:"create_time"`
-		ModifyTime    string   `json:"modify_time"`
-		Action        int      `json:"action"`
-		Message       string   `json:"message"`
-	} `json:"change_logs"`
+		ChangeLogId   int      `json:"change_log_id" bson:"change_log_id"`
+		Status        int      `json:"status" bson:"status"`
+		PublishedTime string   `json:"published_time" bson:"published_time"`
+		FilePaths     []string `json:"file_paths" bson:"file_paths"`
+		CreateTime    string   `json:"create_time" bson:"create_time"`
+		ModifyTime    string   `json:"modify_time" bson:"modify_time"`
+		Action        int      `json:"action" bson:"action"`
+		Message       string   `json:"message" bson:"message"`
+	} `json:"change_logs" bson:"change_logs"`
 	DefaultAudience struct {
-		Status           int    `json:"status"`
-		PushStatus       int    `json:"push_status"`
-		DeliveryStatus   string `json:"delivery_status"`
-		Name             string `json:"name"`
-		CustomType       int    `json:"custom_type"`
-		UploadNum        int    `json:"upload_num"`
-		CustomAudienceId int    `json:"custom_audience_id"`
-		CoverNum         int    `json:"cover_num"`
-		AdvertiserId     int    `json:"advertiser_id"`
-		Source           int    `json:"source"`
-		ExpiryDate       string `json:"expiry_date"`
-		CreateTime       string `json:"create_time"`
-		ModifyTime       string `json:"modify_time"`
-		Isdel            int    `json:"isdel"`
-		Tag              string `json:"tag"`
-		CalculateSubType int    `json:"calculate_sub_type"`
-		CalculateType    int    `json:"calculate_type"`
-		DataSourceId     string `json:"data_source_id"`
-		ThirdPartyInfo   string `json:"third_party_info"`
-	} `json:"default_audience"`
-	DataSourceType              string `json:"data_source_type"`
-	CreateTime                  string `json:"create_time"`
-	ModifyTime                  string `json:"modify_time"`
-	LastestPublishedChangeLogId int    `json:"lastest_published_change_log_id"`
-	LastestPublishedTime        string `json:"lastest_published_time"`
-	UploadNum                   int    `json:"upload_num"`
-	CoverNum                    int    `json:"cover_num"`
-	DataSourceId                string `json:"data_source_id"`
-	Name                        string `json:"name"`
+		Status           int    `json:"status" bson:"status"`
+		PushStatus       int    `json:"push_status" bson:"push_status"`
+		DeliveryStatus   string `json:"delivery_status" bson:"delivery_status"`
+		Name             string `json:"name" bson:"name"`
+		CustomType       int    `json:"custom_type" bson:"custom_type"`
+		UploadNum        int    `json:"upload_num" bson:"upload_num"`
+		CustomAudienceId int    `json:"custom_audience_id" bson:"custom_audience_id"`
+		CoverNum         int    `json:"cover_num" bson:"cover_num"`
+		AdvertiserId     int    `json:"advertiser_id" bson:"advertiser_id"`
+		Source           int    `json:"source" bson:"source"`
+		ExpiryDate       string `json:"expiry_date" bson:"expiry_date"`
+		CreateTime       string `json:"create_time" bson:"create_time"`
+		ModifyTime       string `json:"modify_time" bson:"modify_time"`
+		Isdel            int    `json:"isdel" bson:"isdel"`
+		Tag              string `json:"tag" bson:"tag"`
+		CalculateSubType int    `json:"calculate_sub_type" bson:"calculate_sub_type"`
+		CalculateType    int    `json:"calculate_type" bson:"calculate_type"`
+		DataSourceId     string `json:"data_source_id" bson:"data_source_id"`
+		ThirdPartyInfo   string `json:"third_party_info" bson:"third_party_info"`
+	} `json:"default_audience" bson:"default_audience"`
+	DataSourceType              string `json:"data_source_type" bson:"data_source_type"`
+	CreateTime                  string `json:"create_time" bson:"create_time"`
+	ModifyTime                  string `json:"modify_time" bson:"modify_time"`
+	LastestPublishedChangeLogId int    `json:"lastest_published_change_log_id" bson:"lastest_published_change_log_id"`
+	LastestPublishedTime        string `json:"lastest_published_time" bson:"lastest_published_time"`
+	UploadNum                   int    `json:"upload_num" bson:"upload_num"`
+	CoverNum                    int    `json:"cover_num" bson:"cover_num"`
+	DataSourceId                string `json:"data_source_id" bson:"data_source_id"`
+	Name                        string `json:"name" bson:"name"`
 }
 
 type CustomAudienceSelectParams struct {
@@ -166,14 +166,14 @@ func (p CustomAudienceSelectParams) Json() []byte {
 }
 
 type CustomAudienceSelectResult struct {
-	Message string `json:"message"`
-	Code    int    `json:"code"`
+	Message string `json:"message" bson:"message"`
+	Code    int    `json:"code" bson:"code"`
 	Data    struct {
-		CustomAudienceList []CustomAudienceSelectListItem `json:"custom_audience_list"`
-		TotalNum           int                            `json:"total_num"`
-		Offset             int                            `json:"offset"`
-	} `json:"data"`
-	RequestId string `json:"request_id"`
+		CustomAudienceList []CustomAudienceSelectListItem `json:"custom_audience_list" bson:"custom_audience_list"`
+		TotalNum           int                            `json:"total_num" bson:"total_num"`
+		Offset             int                            `json:"offset" bson:"offset"`
+	} `json:"data" bson:"data"`
+	RequestId string `json:"request_id" bson:"request_id"`
 }
 
 func (p CustomAudienceSelectResult) Json() []byte {
@@ -182,16 +182,16 @@ func (p CustomAudienceSelectResult) Json() []byte {
 }
 
 type CustomAudienceSelectListItem struct {
-	Status           int    `json:"status"`
-	Name             string `json:"name"`
-	CustomAudienceId int    `json:"custom_audience_id"`
-	Source           string `json:"source"`
-	Tag              string `json:"tag"`
-	Isdel            int    `json:"isdel"`
-	DeliveryStatus   string `json:"delivery_status"`
-	UploadNum        int    `json:"upload_num"`
-	CoverNum         int    `json:"cover_num"`
-	DataSourceId     string `json:"data_source_id"`
+	Status           int    `json:"status" bson:"status"`
+	Name             string `json:"name" bson:"name"`
+	CustomAudienceId int    `json:"custom_audience_id" bson:"custom_audience_id"`
+	Source           string `json:"source" bson:"source"`
+	Tag              string `json:"tag" bson:"tag"`
+	Isdel            int    `json:"isdel" bson:"isdel"`
+	DeliveryStatus   string `json:"delivery_status" bson:"delivery_status"`
+	UploadNum        int    `json:"upload_num" bson:"upload_num"`
+	CoverNum         int    `json:"cover_num" bson:"cover_num"`
+	DataSourceId     string `json:"data_source_id" bson:"data_source_id"`
 }
 
 type CustomAudienceReadParams struct {
@@ -205,12 +205,12 @@ func (p CustomAudienceReadParams) Json() []byte {
 }
 
 type CustomAudienceReadResult struct {
-	Message string `json:"message"`
-	Code    int    `json:"code"`
+	Message string `json:"message" bson:"message"`
+	Code    int    `json:"code" bson:"code"`
 	Data    struct {
-		CustomAudienceList []CustomAudienceReadListItem `json:"custom_audience_list"`
-	} `json:"data"`
-	RequestId string `json:"request_id"`
+		CustomAudienceList []CustomAudienceReadListItem `json:"custom_audience_list" bson:"custom_audience_list"`
+	} `json:"data" bson:"data"`
+	RequestId string `json:"request_id" bson:"request_id"`
 }
 
 func (p CustomAudienceReadResult) Json() []byte {
@@ -219,21 +219,21 @@ func (p CustomAudienceReadResult) Json() []byte {
 }
 
 type CustomAudienceReadListItem struct {
-	Status           int    `json:"status"`
-	Name             string `json:"name"`
-	CustomAudienceId int    `json:"custom_audience_id"`
-	CoverNum         int    `json:"cover_num"`
-	Source           string `json:"source"`
-	Tag              string `json:"tag"`
-	CreateTime       string `json:"create_time"`
-	ModifyTime       string `json:"modify_time"`
-	Isdel            int    `json:"isdel"`
-	DeliveryStatus   string `json:"delivery_status"`
-	PushStatus       int    `json:"push_status"`
-	UploadNum        int    `json:"upload_num"`
-	ThirdPartyInfo   string `json:"third_party_info"`
-	DataSourceId     string `json:"data_source_id"`
-	ExistPullOffTag  int    `json:"exist_pull_off_tag"`
+	Status           int    `json:"status" bson:"status"`
+	Name             string `json:"name" bson:"name"`
+	CustomAudienceId int    `json:"custom_audience_id" bson:"custom_audience_id"`
+	CoverNum         int    `json:"cover_num" bson:"cover_num"`
+	Source           string `json:"source" bson:"source"`
+	Tag              string `json:"tag" bson:"tag"`
+	CreateTime       string `json:"create_time" bson:"create_time"`
+	ModifyTime       string `json:"modify_time" bson:"modify_time"`
+	Isdel            int    `json:"isdel" bson:"isdel"`
+	DeliveryStatus   string `json:"delivery_status" bson:"delivery_status"`
+	PushStatus       int    `json:"push_status" bson:"push_status"`
+	UploadNum        int    `json:"upload_num" bson:"upload_num"`
+	ThirdPartyInfo   string `json:"third_party_info" bson:"third_party_info"`
+	DataSourceId     string `json:"data_source_id" bson:"data_source_id"`
+	ExistPullOffTag  int    `json:"exist_pull_off_tag" bson:"exist_pull_off_tag"`
 }
 
 type CustomAudiencePublishParams struct {
@@ -268,12 +268,12 @@ func (p CustomAudienceDeleteParams) Json() []byte {
 }
 
 type CustomAudienceDeleteResult struct {
-	Message string `json:"message"`
-	Code    int    `json:"code"`
+	Message string `json:"message" bson:"message"`
+	Code    int    `json:"code" bson:"code"`
 	Data    struct {
-		CustomAudienceId int `json:"custom_audience_id"`
-	} `json:"data"`
-	RequestId string `json:"request_id"`
+		CustomAudienceId int `json:"custom_audience_id" bson:"custom_audience_id"`
+	} `json:"data" bson:"data"`
+	RequestId string `json:"request_id" bson:"request_id"`
 }
 
 func (p CustomAudienceDeleteResult) Json() []byte {

@@ -25,18 +25,18 @@ func (p CampaignGetParams) Json() []byte {
 }
 
 type CampaignGetResult struct {
-	Code      int    `json:"code"`
-	Message   string `json:"message"`
-	RequestId string `json:"request_id"`
+	Code      int    `json:"code" bson:"code"`
+	Message   string `json:"message" bson:"message"`
+	RequestId string `json:"request_id" bson:"request_id"`
 	Data      struct {
-		List     []CampaignInfo `json:"list"`
+		List     []CampaignInfo `json:"list" bson:"list"`
 		PageInfo struct {
-			Page        int `json:"page"`
-			PageSize    int `json:"page_size"`
-			TotalNumber int `json:"total_number"`
-			TotalPage   int `json:"total_page"`
-		} `json:"page_info"`
-	} `json:"data"`
+			Page        int `json:"page" bson:"page"`
+			PageSize    int `json:"page_size" bson:"page_size"`
+			TotalNumber int `json:"total_number" bson:"total_number"`
+			TotalPage   int `json:"total_page" bson:"total_page"`
+		} `json:"page_info" bson:"page_info"`
+	} `json:"data" bson:"data"`
 }
 
 func (p CampaignGetResult) Json() []byte {
@@ -45,23 +45,23 @@ func (p CampaignGetResult) Json() []byte {
 }
 
 type CampaignInfo struct {
-	MarketingScene       string  `json:"marketing_scene"`
-	DedicateType         string  `json:"dedicate_type"`
-	ModifyTime           string  `json:"modify_time"`
-	Name                 string  `json:"name"`
-	SmartBidType         string  `json:"smart_bid_type"`
-	DeliveryMode         string  `json:"delivery_mode"`
-	CampaignId           int64   `json:"campaign_id"`
-	Budget               float64 `json:"budget"`
-	CampaignCreateTime   string  `json:"campaign_create_time"`
-	CampaignModifyTime   string  `json:"campaign_modify_time"`
-	LandingType          string  `json:"landing_type"`
-	MarketingPurpose     string  `json:"marketing_purpose"`
-	Id                   int64   `json:"id"`
-	AdvertiserId         int64   `json:"advertiser_id"`
-	CampaignType         string  `json:"campaign_type"`
-	Status               string  `json:"status"`
-	BudgetMode           string  `json:"budget_mode"`
-	DeliveryRelatedNum   string  `json:"delivery_related_num"`
-	BudgetOptimizeSwitch string  `json:"budgetOptimizeSwitch"`
+	MarketingScene       string  `json:"marketing_scene" bson:"marketing_scene"`
+	DedicateType         string  `json:"dedicate_type" bson:"dedicate_type"`
+	ModifyTime           string  `json:"modify_time" bson:"modify_time"`
+	Name                 string  `json:"name" bson:"name"`
+	SmartBidType         string  `json:"smart_bid_type" bson:"smart_bid_type"`
+	DeliveryMode         string  `json:"delivery_mode" bson:"delivery_mode"`
+	CampaignId           int64   `json:"campaign_id" bson:"campaign_id"`
+	Budget               float64 `json:"budget" bson:"budget"`
+	CampaignCreateTime   string  `json:"campaign_create_time" bson:"campaign_create_time"`
+	CampaignModifyTime   string  `json:"campaign_modify_time" bson:"campaign_modify_time"`
+	LandingType          string  `json:"landing_type" bson:"landing_type"`
+	MarketingPurpose     string  `json:"marketing_purpose" bson:"marketing_purpose"`
+	Id                   int64   `json:"id" bson:"id"`
+	AdvertiserId         int64   `json:"advertiser_id" bson:"advertiser_id"`
+	CampaignType         string  `json:"campaign_type" bson:"campaign_type"`
+	Status               string  `json:"status" bson:"status"`
+	BudgetMode           string  `json:"budget_mode" bson:"budget_mode"`
+	DeliveryRelatedNum   string  `json:"delivery_related_num" bson:"delivery_related_num"`
+	BudgetOptimizeSwitch string  `json:"budget_optimize_switch" bson:"budget_optimize_switch"`
 }
