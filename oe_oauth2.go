@@ -33,14 +33,15 @@ func (oa oauth2) AuditUrl(redirectUri string, args ...string) string {
 // Access-Token是调用接口时，操作指定广告账户的身份凭证，有效期为24小时
 // Refresh-Token用于生成新access_token和refresh_token并且刷新时效达到续期的目的
 func (oa oauth2) AccessToken(authCode string) (rst AccessTokenResult) {
-	p := goo_utils.NewParams()
-	p.Set("app_id", oa.config.AppId)
-	p.Set("secret", oa.config.Secret)
-	p.Set("grant_type", "auth_code")
-	p.Set("auth_code", authCode)
+	m := goo_utils.M{
+		"app_id":     oa.config.AppId,
+		"secret":     oa.config.Secret,
+		"grant_type": "auth_code",
+		"auth_code":  authCode,
+	}
 
 	rst = AccessTokenResult{}
-	if err := oa.post(ACCESS_TOKEN_URL, p.JSON(), &rst); err != nil {
+	if err := oa.post(ACCESS_TOKEN_URL, m.Json(), &rst); err != nil {
 		rst = AccessTokenResult{Code: 5001, Message: err.Error()}
 	}
 	return
@@ -49,14 +50,15 @@ func (oa oauth2) AccessToken(authCode string) (rst AccessTokenResult) {
 // 刷新Refresh Token
 // https://open.oceanengine.com/labels/7/docs/1696710506097679
 func (oa oauth2) RefreshToken(refreshToken string) (rst RefreshTokenResult) {
-	p := goo_utils.NewParams()
-	p.Set("app_id", oa.config.AppId)
-	p.Set("secret", oa.config.Secret)
-	p.Set("grant_type", "refresh_token")
-	p.Set("refresh_token", refreshToken)
+	m := goo_utils.M{
+		"app_id":        oa.config.AppId,
+		"secret":        oa.config.Secret,
+		"grant_type":    "refresh_token",
+		"refresh_token": refreshToken,
+	}
 
 	rst = RefreshTokenResult{}
-	if err := oa.post(REFRESH_TOKEN_URL, p.JSON(), &rst); err != nil {
+	if err := oa.post(REFRESH_TOKEN_URL, m.Json(), &rst); err != nil {
 		rst = RefreshTokenResult{Code: 5001, Message: err.Error()}
 	}
 	return
@@ -65,13 +67,14 @@ func (oa oauth2) RefreshToken(refreshToken string) (rst RefreshTokenResult) {
 // 获取已授权账户
 // https://open.oceanengine.com/labels/7/docs/1696710506574848
 func (oa oauth2) AdvertiserGet(accessToken string) (rst AdvertiserGetResult) {
-	p := goo_utils.NewParams()
-	p.Set("app_id", oa.config.AppId)
-	p.Set("secret", oa.config.Secret)
-	p.Set("access_token", accessToken)
+	m := goo_utils.M{
+		"app_id":       oa.config.AppId,
+		"secret":       oa.config.Secret,
+		"access_token": accessToken,
+	}
 
 	rst = AdvertiserGetResult{}
-	if err := oa.get(ADVERTISER_GET_URL, p.JSON(), &rst); err != nil {
+	if err := oa.get(ADVERTISER_GET_URL, m.Json(), &rst); err != nil {
 		rst = AdvertiserGetResult{Code: 5001, Message: err.Error()}
 	}
 	return
